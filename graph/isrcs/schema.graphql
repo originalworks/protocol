@@ -1,0 +1,19 @@
+type Resource @entity {
+  id: ID!
+  cid: String!
+  version: String!
+  rightsControllerName: String!
+  signature: String!
+  isrc: String!
+  rightsCoverage: String!
+  territory: String!
+  title: String!
+  artist: String!
+  album: String!
+  releaseDate: String!
+  genre: String!
+  duration: String!
+  timestamp: String!
+  tokenContract: String!
+  blockchain: String!
+}
