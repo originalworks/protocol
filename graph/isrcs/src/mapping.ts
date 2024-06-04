@@ -1,5 +1,5 @@
-import { Resource } from "../generated/schema";
 import { ipfs, json, Bytes, log } from "@graphprotocol/graph-ts";
+import { Resource } from "../generated/schema";
 
 const IPFS_GATEWAY_URL = "https://ipfs.original.works/";
 
