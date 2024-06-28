@@ -2,8 +2,9 @@
 
 The Original Works protocol uses the industry standard DDEX to communicate.
 
-ERN NewReleaseMessage --> To register an ISRC with our without an ISWC
-MWN MusicalWorkNotificationMessage --> To register a ISWC and link it to an ISRC
+* ERN NewReleaseMessage --> To register an ISRC with our without an ISWC
+* MWN MusicalWorkNotificationMessage --> To register a ISWC and link it to an ISRC
+* DSR --> To report past revenues of an asset.
 
 ## ERN
 
@@ -13,15 +14,7 @@ https://ern.ddex.net/electronic-release-notification-message-suite-part-1-defini
 
 An example ERN message is availble [here](./ERN_example.xml).
 
-A simple ERN message will contain these fields:
-
-```xml
-<MessageHeader></MessageHeader>
-<ResourceList></ResourceList>
-<DealList></DealList>
-```
-
-Type of ERN Messages:
+Types of ERN Messages:
 
 `NewReleaseMessage`: Used to notify about a new release.
 
@@ -53,3 +46,8 @@ Summary of elements:
 `MusicalWork`: Contains details about the musical work, including its ID (ISWC), title, composer, and rights information.
 `RightShare` Encapsulates information about the specific rights associated with the musical work, including the proprietary ID, controller, and types of rights.
 `LinkedResource`: Links the musical work to the associated sound recording using the ISRC.
+
+
+## DSR
+
+The DSR messages are designed to facilitate the exchange of sales and usage data between digital service providers (DSPs) and rights holders.
