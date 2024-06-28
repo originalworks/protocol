@@ -2,11 +2,16 @@
 
 The Original Works protocol uses the industry standard DDEX to communicate.
 
+ERN NewReleaseMessage --> To register an ISRC with our without an ISWC
+MWN MusicalWorkNotificationMessage --> To register a ISWC and link it to an ISRC
+
 ## ERN
 
 We use ERN v.4.3
 
 https://ern.ddex.net/electronic-release-notification-message-suite-part-1-definitions-of-messages/ 
+
+An example ERN message is availble [here](./ERN_example.xml).
 
 A simple ERN message will contain these fields:
 
@@ -30,3 +35,21 @@ Type of ERN Messages:
 
 `ReleaseStatusChangeMessage`: Used to notify about changes in the status of a release. This could include changes such as a release becoming active or inactive.
 
+
+## MWN
+
+MWN messages are using to communicate an ISWC and link it to previously sent ISRCs.
+
+Key and unique values in the registry will be the following fields:
+* `MusicalWork`->`MusicalWorkID`-> **`ISWC`**
+* `MusicalWork`-> `RightShare` -> **`RightType`**
+* `MusicalWork`-> `RightShare` -> **`Territory`**
+
+We also have <SharePercentage> we need to handle. TODO.
+
+
+Summary of elements:
+`MessageHeader`: Contains metadata about the message, such as IDs, creation date, sender, and recipient.
+`MusicalWork`: Contains details about the musical work, including its ID (ISWC), title, composer, and rights information.
+`RightShare` Encapsulates information about the specific rights associated with the musical work, including the proprietary ID, controller, and types of rights.
+`LinkedResource`: Links the musical work to the associated sound recording using the ISRC.

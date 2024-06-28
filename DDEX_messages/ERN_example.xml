@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NewReleaseMessage xmlns="http://ddex.net/xml/ern/43"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                   xsi:schemaLocation="http://ddex.net/xml/ern/43 http://service.ddex.net/xml/ern/43/release-notification.xsd" 
+                   AvsVersionId="4.3" 
+                   LanguageAndScriptCode="en">
+
+    <!--1. MessageHeader contains
+    MessageID: A unique identifier for the message.
+    MessageCreatedDateTime: The date and time when the message was created.
+    MessageSender: Information about the sender of the message.
+    MessageRecipient: Information about the recipient of the message. 
+    -->
+    <MessageHeader>
+        <MessageId>MSG12345-01</MessageId>
+        <MessageCreatedDateTime>2024-06-27T10:00:00Z</MessageCreatedDateTime>
+        <MessageSender>
+            <PartyId>PADPIDA2014120301</PartyId>
+            <PartyName>
+                <FullName>Example Sender</FullName>
+            </PartyName>
+        </MessageSender>
+        <MessageRecipient>
+            <PartyId>PADPIDA2014120302</PartyId>
+            <PartyName>
+                <FullName>Example Recipient</FullName>
+            </PartyName>
+        </MessageRecipient>
+    </MessageHeader>
+
+    <!-- 2. ReleaseList contains
+    ReleaseType: Indicate the type of release (e.g., Album, Single, etc.).
+    ReleaseID: A unique identifier for the release (e.g., a Global Release Identifier - GRid).
+    ReleaseTitle: The title of the release.
+    ReleaseLabel: The label or organization responsible for the release.
+    -->
+    <ReleaseList>
+        <Release>
+            <!--ReleaseId fields:
+            ProprietaryId:  A unique identifier assigned by the sender or an internal system. Used internally within the organization that is sending the message.
+            GlobalReleaseId (GRid): A globally unique identifier for identifying a release across different organizations and systems worldwide.
+            ICPN (International Standard Recording Code): Can be a EAN (13 or 8 digits) or an UPC (12 digits).
+            CatalogNumber: A catalog number assigned by the record label or distributor.
+            -->
+            <ReleaseId>
+                <ProprietaryId>REL12345</ProprietaryId>
+                <GlobalReleaseId>GRid::G123456789012345678</GlobalReleaseId>
+                <ICPN>1234567890123</ICPN>
+                <CatalogNumber>CAT12345</CatalogNumber>
+            </ReleaseId>
+            <!-- OPTIONAL TO DO IT BY TERRITORY. IF NOT ITS JUST <ReleaseDetails> -->
+            <ReleaseDetailsByTerritory>
+                <TerritoryCode>Worldwide</TerritoryCode>
+                <Title>
+                    <TitleText>Example Release</TitleText>
+                </Title>
+                <Artist>
+                    <PartyName>
+                        <FullName>Example Artist</FullName>
+                    </PartyName>
+                </Artist>
+                <LabelName>Example Label</LabelName>
+                <Genre>
+                    <GenreText>Pop</GenreText>
+                </Genre>
+                <ParentalWarningType>NotExplicit</ParentalWarningType>
+                <TechnicalDetails>
+                    <!-- 3. Sound Recording Details
+                         SoundRecordingID: A unique identifier for the sound recording.
+                         ISRC: The new ISRC assigned to the sound recording.
+                         SoundRecordingTitle: The title of the sound recording.
+                         Artists: Information about the artists involved in the sound recording.
+                         RightsController: Information about the entity controlling the rights to the sound recording.
+                    -->
+                    <SoundRecording>
+                        <SoundRecordingId>
+                            <ISRC>US1234567890</ISRC>
+                        </SoundRecordingId>
+
+                        <!-- Rights of the ISRC
+                        The RightController can be defined for the entire Resource with the field "ResourceRightsController" or for a specific RightShare with the field "RightController".
+                        RightController is more granular and specific to particular rights within the RightShare section. It defines the entity that controls a specific type of right (e.g., mechanical, performing, reproduction) associated with the resource or musical work.
+                        -->
+                        <ResourceRightsController>
+                            <PartyId>PADPIDA2014120301</PartyId>
+                            <PartyName>
+                                <FullName>Example Rights Holder</FullName>
+                            </PartyName>
+                        </ResourceRightsController>
+                        
+                        <RightsCoverage>
+                            <RightShare>
+                                <RightShareProprietaryId>ISRC-12345</RightShareProprietaryId>
+                                <!-- Elements within RightController:
+                                PartyID: Uunique identifier for the party controlling the rights.
+                                PartyName: The name of the party controlling the rights.
+                                RightControllerName: Specifies the role or function of the party in terms of rights control. sed to describe the type of control the party has over the rights, such as whether they are a publisher, rights administrator, etc.
+                                -->
+                                <RightController>
+                                    <RightControllerName>MusicLabel</RightControllerName>
+                                    <PartyID>PR789012</PartyID>
+                                    <PartyName>MusicPublisher</PartyName>
+                                </RightController>
+                                <RightType>Reproduction</RightType>
+                                <RightType>MakeAvailableRight</RightType>
+                            </RightShare>
+                        </RightsCoverage>
+
+                        <Title>
+                            <TitleText>Example Sound Recording</TitleText>
+                        </Title>
+                        <DisplayArtist>
+                            <PartyName>
+                                <FullName>Example Artist</FullName>
+                            </PartyName>
+                        </DisplayArtist>
+                        <Duration>PT3M30S</Duration>
+                        <MarketingInformation>
+                            <ReleaseDate>2024-07-01</ReleaseDate>
+                        </MarketingInformation>
+                        <ResourceDetailsByTerritory>
+                            <TerritoryCode>Worldwide</TerritoryCode>
+                            <MusicalWorkId>
+                                <ISWC>T-123.456.789.Z</ISWC>
+                            </MusicalWorkId>
+                        </ResourceDetailsByTerritory>
+                    </SoundRecording>
+                </TechnicalDetails>
+            </ReleaseDetailsByTerritory>
+        </Release>
+    </ReleaseList>
+
+
+</NewReleaseMessage>
