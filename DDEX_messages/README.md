@@ -12,7 +12,7 @@ We use ERN v.4.3
 
 https://ern.ddex.net/electronic-release-notification-message-suite-part-1-definitions-of-messages/ 
 
-An example ERN message is availble [here](./ERN_example.xml).
+An example ERN message is available [here](./ERN_example.xml).
 
 Types of ERN Messages:
 

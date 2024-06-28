@@ -8,9 +8,9 @@ If you are in the music industry you are invited to get involved.
 
 ## Ways to get involved
 
-- [Discussions](https://github.com/originalworks/protocol/discussions) - A place to debate the design of the protocol and its implementation
-- [Issues](https://github.com/originalworks/protocol/issues) - Current issues we are working on
-- [Project Pland Roadmap](https://github.com/orgs/originalworks/projects/3/views/4) - Project Plan and Roadmap
+- [Discussions](https://github.com/originalworks/protocol/discussions) - A place to debate the design of the protocol and its implementation.
+- [Issues](https://github.com/originalworks/protocol/issues) - Current issues we are working on.
+- [Project Plan and Roadmap](https://github.com/orgs/originalworks/projects/3/views/4).
 - [Meetings](https://github.com/originalworks/protocol/tree/main/meetings) - Notes on our meetings and links to join. Everybody is invited to join to listen or participate. 
 
-The official documentation of the protocol is available in [https://docs.original.works](https://docs.original.works)
+The official documentation of the protocol is available in [https://docs.original.works](https://docs.original.works).
