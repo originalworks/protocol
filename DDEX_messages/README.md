@@ -45,7 +45,7 @@ Key and unique values in the registry will be the following fields:
 * `MusicalWork`-> `RightShare` -> **`RightType`**
 * `MusicalWork`-> `RightShare` -> **`Territory`**
 
-We also have <SharePercentage> we need to handle. TODO.
+We also have `SharePercentage` we need to handle. TODO.
 
 
 Summary of elements:
