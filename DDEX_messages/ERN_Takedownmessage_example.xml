@@ -6,10 +6,10 @@
                  LanguageAndScriptCode="en">
 
     <!-- MessageHeader contains:
-    - MessageID: A unique identifier for the message.
-    - MessageCreatedDateTime: The date and time when the message was created.
-    - MessageSender: Information about the sender of the message.
-    - MessageRecipient: Information about the recipient of the message.
+            MessageID: A unique identifier for the message.
+            MessageCreatedDateTime: The date and time when the message was created.
+            MessageSender: Information about the sender of the message.
+            MessageRecipient: Information about the recipient of the message. 
     -->
     <MessageHeader>
         <MessageId>MSG12345-02</MessageId>
@@ -29,7 +29,7 @@
     </MessageHeader>
 
     <!-- TakedownReleaseList contains:
-    - ReleaseID: A unique identifier for the release (e.g., a Global Release Identifier - GRid).
+    - ReleaseID: A unique identifier for the release
     -->
     <TakedownReleaseList>
         <TakedownRelease>
