@@ -1,0 +1,16 @@
+{
+  "name": "root",
+  "private": true,
+  "engines": {
+    "node": "16.18.0",
+    "npm": "8.19.2"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "trustedDependencies": [
+    "chai-http",
+    "assemblyscript",
+    "symbol-observable"
+  ]
+}

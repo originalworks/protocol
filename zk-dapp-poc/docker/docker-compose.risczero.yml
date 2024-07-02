@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+  test-runner:
+    build:
+      context: ../packages/risczero/docker
+      args:
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+    volumes:
+      - ..:/app
+    depends_on:
+      - ganache
+    environment:
+      MNEMONIC: ${MNEMONIC}
+      SOURCE_FROM: 01/01/2024
+      SOURCE_TO: 06/30/2024
+    user: node
+    tty: true
+    working_dir: /app/packages/risczero
+    command: "bash"
+  
+  ganache:
+    image: trufflesuite/ganache
+    command: >-
+      --wallet.mnemonic "${MNEMONIC}"
+      --wallet.defaultBalance 1000000 
+      --chain.chainId 5
