@@ -6,8 +6,11 @@ The Original Works protocol uses the industry standard DDEX to communicate.
     * NewReleaseMessage --> To register an ISRC with our without an ISWC
     * UpdateReleaseMessage --> To update information about an existing release
     * TakedownMessage --> To remove a release
-* MWN MusicalWorkNotificationMessage --> To register a ISWC and link it to an ISRC
-* DSR --> To report past revenues of an asset.
+* MWN MusicalWorkNotificationMessage:
+    * To register a ISWC
+    * To link a ISWC to an ISRC
+* DSR:
+    * To report past revenues of an asset.
 
 ## ERN
 
@@ -15,7 +18,7 @@ We use ERN v.4.3
 
 https://ern.ddex.net/electronic-release-notification-message-suite-part-1-definitions-of-messages/ 
 
-An example ERN message is available [here](./ERN_example.xml).
+An example ERN message is available [here](./ERN_NewReleaseMessage_example.xml).
 
 Types of ERN Messages:
 
