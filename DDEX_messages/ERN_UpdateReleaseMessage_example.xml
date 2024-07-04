@@ -7,7 +7,7 @@
                       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
                       xsi:schemaLocation="http://ddex.net/xml/ern/43 http://service.ddex.net/xml/ern/43/update-notification.xsd" 
                       AvsVersionId="4.3" 
-                      LanguageAndScriptCode="en">
+                      LanguageAndScriptCode="en"> <!-- Compulsory -->
 
     <!-- MessageHeader contains:
     - MessageID: A unique identifier for the message.
@@ -15,7 +15,7 @@
     - MessageSender: Information about the sender of the message.
     - MessageRecipient: Information about the recipient of the message.
     -->
-    <MessageHeader>
+    <MessageHeader> <!-- Compulsory -->
         <MessageId>MSG12345-03</MessageId>
         <MessageCreatedDateTime>2024-07-01T10:00:00Z</MessageCreatedDateTime>
         <MessageSender>
@@ -40,8 +40,8 @@
         <UpdateRelease>
             <ReleaseId>
                 <ProprietaryId>REL12345</ProprietaryId>
-                <GlobalReleaseId>GRid::G123456789012345678</GlobalReleaseId>
-                <ICPN>1234567890123</ICPN>
+                <GlobalReleaseId>GRid::G123456789012345678</GlobalReleaseId> <!-- Compulsory -->
+                <ICPN>1234567890123</ICPN> <!-- Compulsory -->
                 <CatalogNumber>CAT12345</CatalogNumber>
             </ReleaseId>
             <ReleaseDetailsByTerritory>

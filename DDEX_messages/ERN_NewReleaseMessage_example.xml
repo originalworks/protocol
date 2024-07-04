@@ -43,10 +43,10 @@
             CatalogNumber: A catalog number assigned by the record label or distributor.
             -->
             <ReleaseId>
-                <ProprietaryId>REL12345</ProprietaryId>
-                <GlobalReleaseId>GRid::G123456789012345678</GlobalReleaseId>
-                <ICPN>1234567890123</ICPN>
-                <CatalogNumber>CAT12345</CatalogNumber>
+                <ProprietaryId>REL12345</ProprietaryId> <!-- Optional -->
+                <GlobalReleaseId>GRid::G123456789012345678</GlobalReleaseId> <!-- Compulsory -->
+                <ICPN>1234567890123</ICPN> <!-- Compulsory -->
+                <CatalogNumber>CAT12345</CatalogNumber> <!-- Optional -->
             </ReleaseId>
             <!-- OPTIONAL TO DO IT BY TERRITORY. IF NOT ITS JUST <ReleaseDetails> -->
             <ReleaseDetailsByTerritory>
@@ -73,7 +73,7 @@
                          RightsController: Information about the entity controlling the rights to the sound recording.
                     -->
                     <SoundRecording>
-                        <SoundRecordingId>
+                        <SoundRecordingId> <!-- Compulsory -->
                             <ISRC>US1234567890</ISRC>
                         </SoundRecordingId>
 
@@ -81,14 +81,14 @@
                         The RightController can be defined for the entire Resource with the field "ResourceRightsController" or for a specific RightShare with the field "RightController".
                         RightController is more granular and specific to particular rights within the RightShare section. It defines the entity that controls a specific type of right (e.g., mechanical, performing, reproduction) associated with the resource or musical work.
                         -->
-                        <ResourceRightsController>
+                        <ResourceRightsController> <!-- Compulsory -->
                             <PartyId>PADPIDA2014120301</PartyId>
                             <PartyName>
                                 <FullName>Example Rights Holder</FullName>
                             </PartyName>
                         </ResourceRightsController>
                         
-                        <RightsCoverage>
+                        <RightsCoverage> <!-- Compulsory -->
                             <RightShare>
                                 <RightShareProprietaryId>ISRC-12345</RightShareProprietaryId>
                                 <!-- Elements within RightController:
@@ -106,19 +106,19 @@
                             </RightShare>
                         </RightsCoverage>
 
-                        <Title>
+                        <Title> <!-- Optional -->
                             <TitleText>Example Sound Recording</TitleText>
                         </Title>
-                        <DisplayArtist>
+                        <DisplayArtist> <!-- Optional -->
                             <PartyName>
                                 <FullName>Example Artist</FullName>
                             </PartyName>
                         </DisplayArtist>
-                        <Duration>PT3M30S</Duration>
-                        <MarketingInformation>
+                        <Duration>PT3M30S</Duration> <!-- Optional -->
+                        <MarketingInformation><!-- Optional -->
                             <ReleaseDate>2024-07-01</ReleaseDate>
                         </MarketingInformation>
-                        <ResourceDetailsByTerritory>
+                        <ResourceDetailsByTerritory> <!-- Optional -->
                             <TerritoryCode>Worldwide</TerritoryCode>
                             <MusicalWorkId>
                                 <ISWC>T-123.456.789.Z</ISWC>

@@ -3,7 +3,7 @@
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
                  xsi:schemaLocation="http://ddex.net/xml/ern/43 http://service.ddex.net/xml/ern/43/takedown-notification.xsd" 
                  AvsVersionId="4.3" 
-                 LanguageAndScriptCode="en">
+                 LanguageAndScriptCode="en"> <!-- Compulsory -->
 
     <!-- MessageHeader contains:
             MessageID: A unique identifier for the message.
@@ -11,7 +11,7 @@
             MessageSender: Information about the sender of the message.
             MessageRecipient: Information about the recipient of the message. 
     -->
-    <MessageHeader>
+    <MessageHeader> <!-- Compulsory -->
         <MessageId>MSG12345-02</MessageId>
         <MessageCreatedDateTime>2024-07-01T10:00:00Z</MessageCreatedDateTime>
         <MessageSender>
@@ -34,10 +34,10 @@
     <TakedownReleaseList>
         <TakedownRelease>
             <ReleaseId>
-                <ProprietaryId>REL12345</ProprietaryId>
+                <ProprietaryId>REL12345</ProprietaryId> <!-- Optional -->
                 <GlobalReleaseId>GRid::G123456789012345678</GlobalReleaseId>
-                <ICPN>1234567890123</ICPN>
-                <CatalogNumber>CAT12345</CatalogNumber>
+                <ICPN>1234567890123</ICPN> <!-- Compulsory -->
+                <CatalogNumber>CAT12345</CatalogNumber> <!-- Optional -->
             </ReleaseId>
         </TakedownRelease>
     </TakedownReleaseList>

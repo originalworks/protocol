@@ -59,3 +59,11 @@ Summary of elements:
 ## DSR
 
 The DSR messages are designed to facilitate the exchange of sales and usage data between digital service providers (DSPs) and rights holders.
+
+## Fields
+
+All fields are tagged as `<!-- Compulsory -->` or `<!-- Optional -->`.
+
+`<!-- Compulsory -->` are compulsary fields, and messages will be rejected if they are not included.
+`<!-- Optional -->` can either exist or not.
+`<!-- Needs to exist --> ` is a field that needs to exist in either the private or the public part of the message, but not required on both.
