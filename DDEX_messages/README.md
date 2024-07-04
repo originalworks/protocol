@@ -11,6 +11,8 @@ The Original Works protocol uses the industry standard DDEX to communicate.
     * To link a ISWC to an ISRC
 * DSR:
     * To report past revenues of an asset.
+* CDN:
+    * Future implementation of right claims ([Issue #29](https://github.com/originalworks/protocol/issues/29))
 
 ## ERN
 
