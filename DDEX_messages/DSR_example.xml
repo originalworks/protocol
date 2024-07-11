@@ -29,9 +29,14 @@
         <SalesReportId>SR12345</SalesReportId>
         <Resource>
             <ResourceId>
-                <ISRC>US1234567890</ISRC>
+            <ISRC>US1234567890</ISRC>
             </ResourceId>
+            <ReleaseId>
+            <GRid>A12425G00000000Z</GRid>
+            </ReleaseId>
         </Resource>
+
+        <DealReleaseReference>A12425G00000000Z</DealReleaseReference>
 
         <!-- Monthly Revenue Transactions -->
         <SalesTransaction>
