@@ -34,9 +34,9 @@
         </MessageRecipient>
     </MessageHeader>
 
-    <!-- UpdateReleaseList contains:
+    <!-- UpdateReleaseList_register_deals contains:
     - ReleaseID: A unique identifier for the release (e.g., a Global Release Identifier - GRid).
-    - ReleaseDetailsByTerritory: Contains updated details for the release.
+    - DealList: List of deals linked to this release.
     -->
     <UpdateReleaseList>
         <UpdateRelease>
