@@ -42,7 +42,7 @@
             </ResourceId>
         </Resource>
         <Deal>  <!--Compulsary  -->
-            <DealReleaseReference>A12425G00000000Z</DealReleaseReference>
+            <DealReleaseReference>A12425G00000000Z</DealReleaseReference> <!--CID of the Deal -->
         </Deal>
                 
         <!-- Monthly Revenue Transactions -->
