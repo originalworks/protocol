@@ -4,6 +4,9 @@
                    xsi:schemaLocation="http://ddex.net/xml/ern/43 http://service.ddex.net/xml/ern/43/release-notification.xsd" 
                    AvsVersionId="4.3" 
                    LanguageAndScriptCode="en">
+    <!--1. Report deals are not allowed in a NewReleaseMessage.
+        You need use the UpdateRelease to report the deals
+    -->
 
     <!--1. MessageHeader contains
     MessageID: A unique identifier for the message.

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+ The following example registers Deals to a Release
+-->
+
+<UpdateReleaseMessage xmlns="http://ddex.net/xml/ern/43"
+                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                      xmlns:custom="http://original.works/xml"
+                      xsi:schemaLocation="http://ddex.net/xml/ern/43 http://service.ddex.net/xml/ern/43/update-notification.xsd
+                      http://original.works/xml deals01.xsd" 
+                      AvsVersionId="4.3" 
+                      LanguageAndScriptCode="en"> <!-- Compulsory -->
+
+    <!-- MessageHeader contains:
+    - MessageID: A unique identifier for the message.
+    - MessageCreatedDateTime: The date and time when the message was created.
+    - MessageSender: Information about the sender of the message.
+    - MessageRecipient: Information about the recipient of the message.
+    -->
+    <MessageHeader> <!-- Compulsory -->
+        <MessageId>MSG12345-03</MessageId>
+        <MessageCreatedDateTime>2024-07-01T10:00:00Z</MessageCreatedDateTime>
+        <MessageSender>
+            <PartyId>PADPIDA2014120301</PartyId>
+            <PartyName>
+                <FullName>Example Sender</FullName>
+            </PartyName>
+        </MessageSender>
+        <MessageRecipient>
+            <PartyId>PADPIDA2014120302</PartyId>
+            <PartyName>
+                <FullName>Example Recipient</FullName>
+            </PartyName>
+        </MessageRecipient>
+    </MessageHeader>
+
+    <!-- UpdateReleaseList contains:
+    - ReleaseID: A unique identifier for the release (e.g., a Global Release Identifier - GRid).
+    - ReleaseDetailsByTerritory: Contains updated details for the release.
+    -->
+    <UpdateReleaseList>
+        <UpdateRelease>
+            <ReleaseId> <!-- Compulsory at least 1 of the following fields-->
+                <ProprietaryId>REL12345</ProprietaryId>
+                <GlobalReleaseId>GRid::G123456789012345678</GlobalReleaseId>
+                <ICPN>1234567890123</ICPN>
+                <CatalogNumber>CAT12345</CatalogNumber>
+            </ReleaseId>
+
+            <!-- Adding a new Deal -->
+            <DealList>
+                <Deal>
+                    <DealId>DEAL12345</DealId>
+                    <DealTerms>
+                        <CommercialModelType>Subscription</CommercialModelType>
+                        <Usage>
+                            <UsageType>Streaming</UsageType>
+                            <TerritoryCode>US</TerritoryCode>
+                        </Usage>
+                        <DealDate>
+                            <StartDate>2024-07-01</StartDate>
+                        </DealDate>
+                    </DealTerms>
+                    <DealReleaseReference>REL12345</DealReleaseReference>
+                    <!-- OW Custom Fields -->
+                    <custom:UserDefinedValue>
+                        <Namespace>http://original.works/xml/deals01</Namespace>
+                        <custom:Private_deal_CID>QmYwAPJzv5CZsnAztbCQpB84sxL5HvQDn6zprKptBnm4Vz</custom:Private_deal_CID>
+                    </custom:UserDefinedValue>
+                </Deal>
+            </DealList>
+        </UpdateRelease>
+    </UpdateReleaseList>
+
+</UpdateReleaseMessage>
