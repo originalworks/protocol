@@ -27,20 +27,24 @@
 
     <SalesReport>
         <SalesReportId>SR12345</SalesReportId>
-        <Resource>
-            <ResourceId> <!--Compulsary to have at least one, but could be any -->
-                <ISRC>US1234567890</ISRC>
-            </ResourceId>
+                
+        <Release>
             <ReleaseId> <!--Compulsary to have at least one, but could be any -->
                 <ProprietaryId>REL12345</ProprietaryId>
                 <GlobalReleaseId>GRid::G123456789012345678</GlobalReleaseId>
                 <ICPN>1234567890123</ICPN>
                 <CatalogNumber>CAT12345</CatalogNumber>
             </ReleaseId>
+        </Release>
+        <Resource>
+            <ResourceId> <!--Compulsary -->
+                <ISRC>US1234567890</ISRC>
+            </ResourceId>
         </Resource>
-
-        <DealReleaseReference>A12425G00000000Z</DealReleaseReference>
-
+        <Deal>  <!--Compulsary  -->
+            <DealReleaseReference>A12425G00000000Z</DealReleaseReference>
+        </Deal>
+                
         <!-- Monthly Revenue Transactions -->
         <SalesTransaction>
             <TransactionId>TX202310</TransactionId>
