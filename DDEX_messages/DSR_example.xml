@@ -28,11 +28,14 @@
     <SalesReport>
         <SalesReportId>SR12345</SalesReportId>
         <Resource>
-            <ResourceId>
-            <ISRC>US1234567890</ISRC>
+            <ResourceId> <!--Compulsary to have at least one, but could be any -->
+                <ISRC>US1234567890</ISRC>
             </ResourceId>
-            <ReleaseId>
-            <GRid>A12425G00000000Z</GRid>
+            <ReleaseId> <!--Compulsary to have at least one, but could be any -->
+                <ProprietaryId>REL12345</ProprietaryId>
+                <GlobalReleaseId>GRid::G123456789012345678</GlobalReleaseId>
+                <ICPN>1234567890123</ICPN>
+                <CatalogNumber>CAT12345</CatalogNumber>
             </ReleaseId>
         </Resource>
 
