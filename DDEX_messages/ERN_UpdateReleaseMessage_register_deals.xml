@@ -67,6 +67,18 @@
                         <Namespace>http://original.works/xml/deals01</Namespace>
                         <custom:Private_deal_CID>QmYwAPJzv5CZsnAztbCQpB84sxL5HvQDn6zprKptBnm4Vz</custom:Private_deal_CID>
                     </custom:UserDefinedValue>
+                    <Licensor> <!-- Optional -->
+                        <PartyId>ISNI::0000000121463088</PartyId>
+                        <PartyName>
+                            <FullName>Example Music Company</FullName>
+                        </PartyName>
+                    </Licensor>
+                    <Licensee> <!-- Optional -->
+                        <PartyId>0xc0ffee254729296a45a3885639AC7E10F9d54979</PartyId>  <!--Can be a 0x address -->
+                        <PartyName>
+                            <FullName>Digital Service Provider XYZ</:FullName>
+                        </PartyName>
+                    </Licensee>
                 </Deal>
             </DealList>
         </UpdateRelease>

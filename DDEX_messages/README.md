@@ -5,12 +5,13 @@ The Original Works protocol uses the industry standard DDEX to communicate.
 * ERN:
     * NewReleaseMessage --> To register an ISRC with our without an ISWC
     * UpdateReleaseMessage --> To update information about an existing release
+    * UpdateReleaseMessage --> To register deals linked an existing release
     * TakedownMessage --> To remove a release
 * MWN MusicalWorkNotificationMessage:
     * To register a ISWC
     * To link a ISWC to an ISRC
 * DSR:
-    * To report past revenues of an asset.
+    * To report past revenues of a release.
 * CDN:
     * Future implementation of right claims ([Issue #29](https://github.com/originalworks/protocol/issues/29))
 
