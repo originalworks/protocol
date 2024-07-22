@@ -78,6 +78,7 @@
                     <SoundRecording>
                         <SoundRecordingId> <!-- Compulsory -->
                             <ISRC>US1234567890</ISRC>
+                            <ISCC>ISCC:KEC37BNSAEG5UGZOQGP4RB4J4SOOPSLAIL74KIXPQWGN3PZIILZ2YPI</ISCC>
                         </SoundRecordingId>
 
                         <!-- Rights of the ISRC
