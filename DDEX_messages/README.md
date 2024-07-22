@@ -15,6 +15,8 @@ The Original Works protocol uses the industry standard DDEX to communicate.
 * CDN:
     * Future implementation of right claims ([Issue #29](https://github.com/originalworks/protocol/issues/29))
 
+*Note: Original Works Party ID is: PA-DPIDA-2024072201-A*
+
 ## ERN
 
 We use ERN v.4.3
