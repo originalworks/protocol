@@ -3,86 +3,86 @@
     <xs:element name="MusicalWorkNotificationMessage">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="MessageHeader">
+                <xs:element name="MessageHeader" minOccurs="1">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="MessageID" type="xs:string"/>
-                            <xs:element name="MessageCreatedDateTime" type="xs:dateTime"/>
-                            <xs:element name="Sender">
+                            <xs:element name="MessageID" type="xs:string" minOccurs="1"/>
+                            <xs:element name="MessageCreatedDateTime" type="xs:dateTime" minOccurs="1"/>
+                            <xs:element name="Sender" minOccurs="1">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="PartyName" type="xs:string"/>
-                                        <xs:element name="PartyID" type="xs:string"/>
+                                        <xs:element name="PartyName" type="xs:string" minOccurs="1"/>
+                                        <xs:element name="PartyID" type="xs:string" minOccurs="1"/>
                                     </xs:sequence>
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="Recipient">
+                            <xs:element name="Recipient" minOccurs="1">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="PartyName" type="xs:string"/>
-                                        <xs:element name="PartyID" type="xs:string"/>
+                                        <xs:element name="PartyName" type="xs:string" minOccurs="1"/>
+                                        <xs:element name="PartyID" type="xs:string" minOccurs="1"/>
                                     </xs:sequence>
                                 </xs:complexType>
                             </xs:element>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="MusicalWork">
+                <xs:element name="MusicalWork" minOccurs="1">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="MusicalWorkID">
+                            <xs:element name="MusicalWorkID" minOccurs="1">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="ISWC" type="xs:string"/>
+                                        <xs:element name="ISWC" type="xs:string" minOccurs="1"/>
                                     </xs:sequence>
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="Title" type="xs:string"/>
+                            <xs:element name="Title" type="xs:string" minOccurs="0"/>
                             <xs:element name="AlternateTitles" minOccurs="0">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="Title" type="xs:string"/>
+                                        <xs:element name="Title" type="xs:string" minOccurs="1"/>
                                     </xs:sequence>
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="Composer">
+                            <xs:element name="Composer" minOccurs="0">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="ComposerName" type="xs:string"/>
+                                        <xs:element name="ComposerName" type="xs:string" minOccurs="1"/>
                                     </xs:sequence>
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="WorkType" type="xs:string"/>
-                            <xs:element name="RightShare">
+                            <xs:element name="WorkType" type="xs:string" minOccurs="0"/>
+                            <xs:element name="RightShare" minOccurs="1">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="RightShareProprietaryId" type="xs:string"/>
-                                        <xs:element name="RightController">
+                                        <xs:element name="RightShareProprietaryId" type="xs:string" minOccurs="1"/>
+                                        <xs:element name="RightController" minOccurs="1">
                                             <xs:complexType>
                                                 <xs:sequence>
-                                                    <xs:element name="PartyID" type="xs:string"/>
-                                                    <xs:element name="PartyName" type="xs:string"/>
-                                                    <xs:element name="RightControllerName" type="xs:string"/>
+                                                    <xs:element name="PartyID" type="xs:string" minOccurs="1"/>
+                                                    <xs:element name="PartyName" type="xs:string" minOccurs="1"/>
+                                                    <xs:element name="RightControllerName" type="xs:string" minOccurs="1"/>
                                                 </xs:sequence>
                                             </xs:complexType>
                                         </xs:element>
-                                        <xs:element name="RightType" type="xs:string" maxOccurs="unbounded"/>
-                                        <xs:element name="Territory" type="xs:string"/>
-                                        <xs:element name="SharePercentage" type="xs:decimal"/>
+                                        <xs:element name="RightType" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+                                        <xs:element name="Territory" type="xs:string" minOccurs="1"/>
+                                        <xs:element name="SharePercentage" type="xs:decimal" minOccurs="1"/>
                                     </xs:sequence>
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="LinkedResources">
+                            <xs:element name="LinkedResources" minOccurs="0">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="LinkedResource">
+                                        <xs:element name="LinkedResource" minOccurs="0">
                                             <xs:complexType>
                                                 <xs:sequence>
-                                                    <xs:element name="ResourceType" type="xs:string"/>
-                                                    <xs:element name="ResourceID">
+                                                    <xs:element name="ResourceType" type="xs:string" minOccurs="1"/>
+                                                    <xs:element name="ResourceID" minOccurs="1">
                                                         <xs:complexType>
                                                             <xs:sequence>
-                                                                <xs:element name="ISRC" type="xs:string"/>
+                                                                <xs:element name="ISRC" type="xs:string" minOccurs="1"/>
                                                             </xs:sequence>
                                                         </xs:complexType>
                                                     </xs:element>
