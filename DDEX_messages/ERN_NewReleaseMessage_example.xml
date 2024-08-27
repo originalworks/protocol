@@ -68,6 +68,26 @@
                 </Genre>
                 <ParentalWarningType>NotExplicit</ParentalWarningType>
                 <TechnicalDetails>
+                    <!-- Adding Cover Image as a Resource -->
+                    <ResourceGroup>
+                        <Resource>
+                            <ImageResource>
+                                <ImageId>
+                                    <ProprietaryId>IMG12345</ProprietaryId>
+                                </ImageId>
+                                <ImageType>FrontCoverImage</ImageType>
+                                <Title>
+                                    <TitleText>Example Cover Image</TitleText>
+                                </Title>
+                                <ImageDetailsByTerritory>
+                                    <TerritoryCode>Worldwide</TerritoryCode>
+                                    <Locator>
+                                        <URL>http://ipfs.original.works/CID</URL>
+                                    </Locator>
+                                </ImageDetailsByTerritory>
+                            </ImageResource>
+                        </Resource>
+                    </ResourceGroup>
                     <!-- 3. Sound Recording Details
                          SoundRecordingID: A unique identifier for the sound recording.
                          ISRC: The new ISRC assigned to the sound recording.
