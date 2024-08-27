@@ -147,6 +147,10 @@
                             <MusicalWorkId>
                                 <ISWC>T-123.456.789.Z</ISWC>
                             </MusicalWorkId>
+                            <!-- The URL for the sound recording -->
+                            <Locator>
+                                <URL>filename1.wav</URL>
+                            </Locator>
                         </ResourceDetailsByTerritory>
                     </SoundRecording>
                 </TechnicalDetails>
