@@ -153,7 +153,7 @@
                             </Locator>
                             <!-- Using ResourceAnnotation to note verification tests like ACRCloud-->
                             <ResourceAnnotation>
-                                <AnnotationType>Verifier</AnnotationType>
+                                <AnnotationType>Fingerprint</AnnotationType>
                                 <AnnotationCreator>ACRCloud</AnnotationCreator>
                                 <AnnotationText>Passed</AnnotationText>
                                 <AnnotationDate>2024-06-27</AnnotationDate>
