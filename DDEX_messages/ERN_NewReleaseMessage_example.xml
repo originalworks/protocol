@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<NewReleaseMessage xmlns="http://ddex.net/xml/ern/43"
+<ern:NewReleaseMessage xmlns:ern="http://ddex.net/xml/ern/43"
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
                    xsi:schemaLocation="http://ddex.net/xml/ern/43 http://service.ddex.net/xml/ern/43/release-notification.xsd" 
-                   AvsVersionId="4.3" 
-                   LanguageAndScriptCode="en">
+                   LanguageAndScriptCode="en" AvsVersionId="4.3">
     <!--1. Report deals are not allowed in a NewReleaseMessage.
         You need use the UpdateRelease to report the deals
     -->
@@ -16,7 +15,6 @@
     -->
     <MessageHeader>
         <MessageId>MSG12345-01</MessageId>
-        <MessageCreatedDateTime>2024-06-27T10:00:00Z</MessageCreatedDateTime>
         <MessageSender>
             <PartyId>PADPIDA2014120301</PartyId>
             <PartyName>
@@ -24,11 +22,12 @@
             </PartyName>
         </MessageSender>
         <MessageRecipient>
-            <PartyId>PA-DPIDA-2024072201-A</PartyId>
+            <PartyId>PADPIDA2024072201A</PartyId>
             <PartyName>
                 <FullName>Original Works</FullName>
             </PartyName>
         </MessageRecipient>
+        <MessageCreatedDateTime>2024-09-24T14:57:25+01:00</MessageCreatedDateTime>
     </MessageHeader>
 
     <!-- 2. ReleaseList contains
@@ -166,4 +165,4 @@
     </ReleaseList>
 
 
-</NewReleaseMessage>
+</ern:NewReleaseMessage>
