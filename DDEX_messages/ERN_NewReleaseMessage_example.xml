@@ -142,7 +142,7 @@
             <VersionType>AlbumVersion</VersionType>
             <DisplayArtistName></DisplayArtistName>
             <DisplayArtist>
-                <SpecialDisplayArtist></SpecialDisplayArtist>
+                <SpecialDisplayArtist>Traditional</SpecialDisplayArtist>
                 <ArtisticRole>
                     <Value>Author</Value>
                 </ArtisticRole>
@@ -159,7 +159,7 @@
             <Character>
                 <CharacterPartyReference>P11111111</CharacterPartyReference>
                 <Performer>
-                    <SpecialContributor></SpecialContributor>
+                    <SpecialContributor>Traditional</SpecialContributor>
                     <Role>
                         <Value>Author</Value>
                     </Role>
@@ -250,7 +250,7 @@
                 <SequenceNumber>1</SequenceNumber>
                 <NoDisplaySequence>true</NoDisplaySequence>
                 <DisplayArtist>
-                    <SpecialDisplayArtist></SpecialDisplayArtist>
+                    <SpecialDisplayArtist>Traditional</SpecialDisplayArtist>
                     <ArtisticRole>
                         <Value>Author</Value>
                     </ArtisticRole>
