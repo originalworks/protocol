@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ern:NewReleaseMessage xmlns:ern="http://ddex.net/xml/ern/431"
+<ern:NewReleaseMessage xmlns:ern="http://ddex.net/xml/ern/43"
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-                   xsi:schemaLocation="http://ddex.net/xml/ern/431 http://service.ddex.net/xml/ern/431/release-notification.xsd" 
-                   LanguageAndScriptCode="en" AvsVersionId="4.3.1">
+                   xsi:schemaLocation="http://ddex.net/xml/ern/43 http://service.ddex.net/xml/ern/43/release-notification.xsd" 
+                   LanguageAndScriptCode="en" AvsVersionId="4.3">
     <!--1. Report deals are not allowed in a NewReleaseMessage.
         You need use the UpdateRelease to report the deals
     -->
@@ -57,7 +57,7 @@
             </PartyId>
 
             <Affiliation>
-                <PartyAffiliateReference>P11</PartyAffiliateReference> <!--OR <CompanyName>My Company</CompanyName>-->
+                <PartyAffiliateReference>PADPIDA2014120301</PartyAffiliateReference> <!--OR <CompanyName>My Company</CompanyName>-->
                 <Type>MusicLicensingCompany</Type>
                 <TerritoryCode>Worldwide</TerritoryCode>
                 <ValidityPeriod>
@@ -70,10 +70,17 @@
             </Affiliation>
         </Party>
         <Party>
-            <PartyReference>PExampleRefernce</PartyReference>
+            <PartyReference>PExampleReference1</PartyReference>
             <PartyName>
                 <FullName>Example Rights Holder</FullName>
                 <FullNameIndexed>Example Rights Holder</FullNameIndexed>
+            </PartyName>
+        </Party>
+        <Party>
+            <PartyReference>PExampleReference2</PartyReference>
+            <PartyName>
+                <FullName>Artist Namer</FullName>
+                <FullNameIndexed>Example Artist Namer</FullNameIndexed>
             </PartyName>
         </Party>
     </PartyList>
@@ -131,42 +138,59 @@
                 <TitleText>Example Sound Recording</TitleText>
                 <SubTitle>Example Subtitle</SubTitle>
             </DisplayTitle>
+
+            <!-- Only for v.4.3.1
+            
             <FormalTitle>
                 <TitleText>Example Sound Recording</TitleText>
                 <SubTitle>Example Subtitle</SubTitle>
             </FormalTitle>
+
             <GroupingTitle>
                 <TitleText>Example Sound Recording</TitleText>
                 <SubTitle>Example Subtitle</SubTitle>
-            </GroupingTitle>
+            </GroupingTitle> 
+           -->
+
             <VersionType>AlbumVersion</VersionType>
             <DisplayArtistName></DisplayArtistName>
             <DisplayArtist>
+                <ArtistPartyReference>PExampleReference2</ArtistPartyReference>
+                <DisplayArtistRole>Artist</DisplayArtistRole>
+                <!--Only for v.4.3.1
                 <SpecialDisplayArtist>Traditional</SpecialDisplayArtist>
                 <ArtisticRole>
                     <Value>Author</Value>
                 </ArtisticRole>
+                 -->
                 <TitleDisplayInformation>
                     <IsDisplayedInTitle>true</IsDisplayedInTitle>
                 </TitleDisplayInformation>
             </DisplayArtist>
             <Contributor SequenceNumber="1">
-                <ContributorPartyReference>P11111111</ContributorPartyReference>
+                <ContributorPartyReference>PExampleReference2</ContributorPartyReference>
+                
+                <Role>Author</Role>
+                 <!--Only for v.4.3.1
                 <Role>
                     <Value>Author</Value>
                 </Role>
+                -->
+                
              </Contributor>
             <Character>
-                <CharacterPartyReference>P11111111</CharacterPartyReference>
+                <CharacterPartyReference>PExampleReference2</CharacterPartyReference>
+                <!--Only for v.4.3.1
                 <Performer>
                     <SpecialContributor>Traditional</SpecialContributor>
                     <Role>
                         <Value>Author</Value>
                     </Role>
                 </Performer>
+                -->
             </Character>
             <ResourceRightsController>
-                <RightsControllerPartyReference>P11111111</RightsControllerPartyReference>
+                <RightsControllerPartyReference>PExampleReference1</RightsControllerPartyReference>
                 <RightsControlType>RoyaltyAdministrator</RightsControlType>
             </ResourceRightsController>
             <Duration>PT2M28S</Duration>
@@ -224,14 +248,19 @@
             <DisplayArtistName ApplicableTerritoryCode="Worldwide" LanguageAndScriptCode="ja-Latn" IsDefault="true">Saeko Shu</DisplayArtistName>
             <DisplayArtistName LanguageAndScriptCode="ja-Jpan" ApplicableTerritoryCode="Worldwide">しゅうさえこ</DisplayArtistName>
             <DisplayArtist SequenceNumber="1">
-                <ArtistPartyReference>PSaekoShu</ArtistPartyReference>
+                <ArtistPartyReference>PExampleReference2</ArtistPartyReference>
                 <DisplayArtistRole>MainArtist</DisplayArtistRole>
             </DisplayArtist>
-            <ReleaseLabelReference ApplicableTerritoryCode="Worldwide">PEMI</ReleaseLabelReference>
+            <ReleaseLabelReference ApplicableTerritoryCode="Worldwide">PExampleReference1</ReleaseLabelReference>
             <Duration>PT36M30S</Duration>
+            <Genre>
+                <GenreText></GenreText>
+            </Genre>
+            <!-- For v.4.3.1.
             <DisplayGenre ApplicableTerritoryCode="Worldwide">
                <GenreText>Pop</GenreText>
             </DisplayGenre>
+            -->
             <ParentalWarningType>NoAdviceAvailable</ParentalWarningType>
             <ResourceGroup>
                 <DisplayTitleText></DisplayTitleText>
@@ -239,6 +268,7 @@
                     <TitleText></TitleText>
                     <SubTitle></SubTitle>
                 </DisplayTitle>
+                 <!-- Only for v.4.3.1
                 <FormalTitle>
                     <TitleText></TitleText>
                     <SubTitle></SubTitle>
@@ -247,13 +277,18 @@
                     <TitleText></TitleText>
                     <SubTitle></SubTitle>
                 </GroupingTitle>
+                -->
                 <SequenceNumber>1</SequenceNumber>
                 <NoDisplaySequence>true</NoDisplaySequence>
                 <DisplayArtist>
+                    <ArtistPartyReference>PExampleReference2</ArtistPartyReference>
+                    <DisplayArtistRole>Artist</DisplayArtistRole>
+                     <!-- Only for v.4.3.1
                     <SpecialDisplayArtist>Traditional</SpecialDisplayArtist>
                     <ArtisticRole>
                         <Value>Author</Value>
                     </ArtisticRole>
+                     -->
                     <TitleDisplayInformation>
                         <IsDisplayedInTitle>true</IsDisplayedInTitle>
                     </TitleDisplayInformation>
@@ -274,11 +309,15 @@
                <ProprietaryId Namespace="PADPIDA2013042401U">00094631432057_JPTO09404900_R1</ProprietaryId>
             </ReleaseId>
             <ReleaseResourceReference>A1</ReleaseResourceReference>
-            <ReleaseLabelReference ApplicableTerritoryCode="Worldwide">PEMI</ReleaseLabelReference>
+            <ReleaseLabelReference ApplicableTerritoryCode="Worldwide">PExampleReference2</ReleaseLabelReference>
+            <Genre>
+                <GenreText></GenreText>
+            </Genre>
+            <!-- For v.4.3.1.
             <DisplayGenre ApplicableTerritoryCode="Worldwide">
-                <GenreText>Pop</GenreText>
+               <GenreText>Pop</GenreText>
             </DisplayGenre>
-     
+            -->    
          </TrackRelease>
          <TrackRelease>
             <ReleaseReference>R2</ReleaseReference>
@@ -286,10 +325,15 @@
                <ProprietaryId Namespace="PADPIDA2013042401U">00094631432057_JPTO09404910_R2</ProprietaryId>
             </ReleaseId>
             <ReleaseResourceReference>A2</ReleaseResourceReference>
-            <ReleaseLabelReference ApplicableTerritoryCode="Worldwide">PEMI</ReleaseLabelReference>
+            <ReleaseLabelReference ApplicableTerritoryCode="Worldwide">PExampleReference2</ReleaseLabelReference>
+            <Genre>
+                <GenreText></GenreText>
+            </Genre>
+            <!-- For v.4.3.1.
             <DisplayGenre ApplicableTerritoryCode="Worldwide">
-                <GenreText>Pop</GenreText>
+               <GenreText>Pop</GenreText>
             </DisplayGenre>
+            -->    
         </TrackRelease>
     </ReleaseList>
 </ern:NewReleaseMessage>
