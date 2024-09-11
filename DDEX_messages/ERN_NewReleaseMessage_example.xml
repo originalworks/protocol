@@ -3,8 +3,11 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
                    xsi:schemaLocation="http://ddex.net/xml/ern/43 http://service.ddex.net/xml/ern/43/release-notification.xsd" 
                    LanguageAndScriptCode="en" AvsVersionId="4.3">
-    <!--1. Report deals are not allowed in a NewReleaseMessage.
-        You need use the UpdateRelease to report the deals
+
+    
+    <!--NOTES.
+        Report deals are not allowed in a NewReleaseMessage. You need use the UpdateRelease to report the deals
+        This file should only contain PUBLIC information.
     -->
 
     <!--1. MessageHeader contains
@@ -39,8 +42,8 @@
         <!-- ReleaseAdminId identifies a group of record company personnel to be granted
          access to the MessageRecipient’s systems to administer the Release. Note that the communication of user access credentials is out of scope for the NewReleaseMessage.
         -->
-        <ReleaseAdminId>PADPIDA2024072201A</ReleaseAdminId>
-        <PersonnelDescription>Original Works</PersonnelDescription>
+        <ReleaseAdminId>PADPIDA2014120301</ReleaseAdminId> 
+        <PersonnelDescription>Example Sender</PersonnelDescription> <!-- INDEXED-->
         <SystemDescription></SystemDescription>
     </ReleaseAdmin>
 
@@ -56,7 +59,7 @@
                 <DPID>PADPIDA2014120301</DPID>
             </PartyId>
 
-            <Affiliation>
+        <Affiliation> <!--OPTIONAL -->
                 <PartyAffiliateReference>PADPIDA2014120301</PartyAffiliateReference> <!--OR <CompanyName>My Company</CompanyName>-->
                 <Type>MusicLicensingCompany</Type>
                 <TerritoryCode>Worldwide</TerritoryCode>
@@ -67,7 +70,8 @@
                 <RightsType>ReproductionRight</RightsType>
                 <RightsType>MakeAvailableRight</RightsType>
                 <PercentageOfRightsAssignment>100</PercentageOfRightsAssignment>
-            </Affiliation>
+        </Affiliation>
+
         </Party>
         <Party>
             <PartyReference>PExampleReference1</PartyReference>
@@ -98,7 +102,7 @@
             <SoundRecordingEdition>
                 <Type>ImmersiveEdition</Type>
                 <ResourceId>
-                    <ISRC>US1234567890</ISRC>
+                    <ISRC>US1234567890</ISRC> <!-- INDEXED-->
                     <CatalogNumber Namespace="DDD"></CatalogNumber>
                     <ProprietaryId Namespace="DDD"></ProprietaryId>
                 </ResourceId>
