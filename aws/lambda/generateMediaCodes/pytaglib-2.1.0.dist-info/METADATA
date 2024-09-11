@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: pytaglib
+Version: 2.1.0
+Summary: cross-platform, Python audio metadata ("tagging") library based on TagLib
+Author-email: Michael Helmling <michaelhelmling@posteo.de>
+License: GPLv3+
+Project-URL: Repository, https://github.com/supermihi/pytaglib
+Project-URL: Issues, https://github.com/supermihi/pytaglib/issues
+Project-URL: Changelog, https://github.com/supermihi/pytaglib/blob/main/CHANGELOG.md
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Cython
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Provides-Extra: tests
+Requires-Dist: pytest ~=7.4.3 ; extra == 'tests'
+

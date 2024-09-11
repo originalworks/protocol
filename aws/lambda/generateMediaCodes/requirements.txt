@@ -1,0 +1,5 @@
+iscc-sdk
+boto3
+cid
+multihash
+

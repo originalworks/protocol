@@ -1,0 +1,30 @@
+title: iscc-jsonld
+type: object
+description: The ISCC [JSON-LD](https://json-ld.org/) Context and [JSON Schema](https://json-schema.org/)
+  reference
+properties:
+  '@context':
+    type: string
+    format: uri
+    default: http://purl.org/iscc/context
+    description: The [JSON-LD](https://json-ld.org/) Context URI for ISCC metadata.
+    readOnly: true
+  '@type':
+    type: string
+    readOnly: true
+    default: CreativeWork
+    enum:
+    - CreativeWork
+    - TextDigitalDocument
+    - ImageObject
+    - AudioObject
+    - VideoObject
+    description: The type of digital content according to schema.org classes (TextDigitalDocument,
+      ImageObject, AudioObject, VideoObject).
+  $schema:
+    type: string
+    format: uri
+    default: http://purl.org/iscc/schema
+    description: The [JSON Schema](https://json-schema.org/) URI for ISCC metadata.
+    readOnly: true
+    x-iscc-context: http://purl.org/iscc/terms/#$schema

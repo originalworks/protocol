@@ -1,0 +1,9 @@
+blake3-0.4.1.dist-info/INSTALLER,sha256=zuuue4knoyJ-UwPPXg8fezS7VCrXJQrAP7zeNuwvFQg,4
+blake3-0.4.1.dist-info/METADATA,sha256=RrvOi62tKHw1FcQ88Xoy1bHS0OSCkzWtmg4g0uHG37M,4118
+blake3-0.4.1.dist-info/RECORD,,
+blake3-0.4.1.dist-info/WHEEL,sha256=nAZyrXylEaUurPo8pShZo9iQF6xA-xE-8KM6WJLGL1g,129
+blake3/__init__.py,sha256=i5GXKa35g4Dt_hOK8OmCFGY-6xDtzmTAGlepSFv_0ns,107
+blake3/__init__.pyi,sha256=jUG5KMl6DxAXfgyk4ard382pbTMEtMPRBmkOdTy0jBI,872
+blake3/__pycache__/__init__.cpython-310.pyc,,
+blake3/blake3.cpython-310-x86_64-linux-gnu.so,sha256=X-Tm-4FDrfiCcXIXaEfVmxgxytdn-fAacTELVK5F8N0,5231008
+blake3/py.typed,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0

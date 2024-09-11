@@ -1,0 +1,89 @@
+title: iscc-extended
+type: object
+description: Extended ISCC Metadata
+properties:
+  media_id:
+    type: string
+    description: Vendor specific (internal) identifier for the source media file.
+    example: 05VQ3BGTGFCJA
+    x-iscc-context: http://schema.org/identifier
+    x-iscc-schema-doc: The identifier property represents any kind of identifier for any kind
+      of Thing, such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties
+      for representing many of these, either as textual strings or as URL (URI) links.
+  iscc_id:
+    type: string
+    description: The **ISCC-ID** of the digital content in canonical representation.
+    example: ISCC:MAACAJINXFXA2SQX
+    minLength: 15
+    maxLength: 73
+    pattern: ^ISCC:[A-Z2-7]{10,73}$
+    x-iscc-context: http://schema.org/identifier
+    x-iscc-schema-doc: The identifier property represents any kind of identifier for any kind
+      of Thing, such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties
+      for representing many of these, either as textual strings or as URL (URI) links.
+  image:
+    type: string
+    format: uri
+    description: URI for a user-presentable image that serves as a preview of the *digital
+      content*. The URI may be a Data-URL [RFC2397](https://datatracker.ietf.org/doc/html/rfc2397).
+      If **ISCC** metadata is used as NFT metadata according to [ERC-721](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/)
+      or [ERC-1155](https://ethereum.org/en/developers/docs/standards/tokens/erc-1155/) the
+      URI should reference the actual digital content represented by the NFT.
+    example: https://picsum.photos/200/300.jpg
+    x-iscc-context: http://schema.org/image
+    x-iscc-schema-doc: An image of the item. This can be a URL or a fully described ImageObject.
+  identifier:
+    description: Other identifier(s) referencing the work, product or other abstraction of
+      which the referenced **digital content** is a full or partial manifestation.
+    oneOf:
+    - type: string
+    - type: array
+      items:
+      - type: string
+    x-iscc-context: http://schema.org/identifier
+    x-iscc-schema-doc: The identifier property represents any kind of identifier for any kind
+      of Thing, such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties
+      for representing many of these, either as textual strings or as URL (URI) links. See
+      background notes for more details.
+  content:
+    description: URI of the *digital content* that was used to create this ISCC.
+    type: string
+    format: uri
+    x-iscc-context: http://schema.org/contentUrl
+    x-iscc-schema-doc: Actual bytes of the media object, for example the image file or video
+      file.
+  keywords:
+    oneOf:
+    - type: string
+    - type: array
+      items:
+      - type: string
+    description: Keywords or tags used to describe this content. Either a list of keywords
+      or a sting with comma separated keywords.
+    x-iscc-context: http://schema.org/keywords
+    x-iscc-schema-doc: Keywords or tags used to describe this content. Multiple entries in
+      a keywords list are typically delimited by commas.
+  previous:
+    description: ISCC of the preceding version of this item.
+    type: string
+    x-iscc-context: http://purl.org/iscc/terms/#previous
+  version:
+    description: The version of the CreativeWork embodied by a specified resource.
+    type:
+    - integer
+    - string
+    x-iscc-context: http://schema.org/version
+    x-iscc-schema-doc: The version of the *digital content* identified by the ISCC.
+examples:
+- '@context': http://purl.org/iscc/context
+  '@type': TextDigitalDocument
+  $schema: http://purl.org/iscc/schema
+  iscc: ISCC:KACYPXW445FTYNJ3CYSXHAFJMA2HUWULUNRFE3BLHRSCXYH2M5AEGQY
+  name: The Never Ending Story
+  description: a 1984 fantasy film co-written and directed by *Wolfgang Petersen*
+  image: https://picsum.photos/200/300.jpg
+  content: https://example.com/the-asset.epub
+  identifier: urn:isbn:3-8273-7019-1
+  creator: Frank Fancy
+  license: https://example.com/license.txt
+  redirect: https://example.com/about-the-asset

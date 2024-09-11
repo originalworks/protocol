@@ -1,0 +1,29 @@
+title: iscc-crypto
+type: object
+description: Cryptography related ISCC Metadata
+properties:
+  tophash:
+    type: string
+    readOnly: true
+    minLength: 40
+    example: bdyqnosmb56tqudeibogyygmf2b25xs7wpg4zux4zcts2v6llqmnj4ja
+    description: A [Multihash](https://multiformats.io/multihash/) of the concatenation (binding)
+      of metahash and datahash (default blake3).
+    x-iscc-context: http://purl.org/iscc/terms/#tophash
+  metahash:
+    type: string
+    minLength: 40
+    example: f01551220b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9
+    readOnly: true
+    description: A [Multiformats](https://multiformats.io) multihash or IPFS CIDv1 of the
+      supplied metadata. The hash is created from `name` and `description` fields or `meta`
+      if supplied.
+    x-iscc-context: http://purl.org/iscc/terms/#metahash
+  datahash:
+    type: string
+    minLength: 40
+    example: bdyqk6e2jxh27tingubae32rw3teutg6lexe23qisw7gjve6k4qpteyq
+    readOnly: true
+    description: A [Multihash](https://multiformats.io/multihash/) of the *digital content*
+      (default blake3).
+    x-iscc-context: http://purl.org/iscc/terms/#datahash

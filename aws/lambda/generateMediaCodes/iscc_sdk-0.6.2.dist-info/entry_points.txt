@@ -1,0 +1,3 @@
+[console_scripts]
+idk=iscc_sdk.cli:app
+

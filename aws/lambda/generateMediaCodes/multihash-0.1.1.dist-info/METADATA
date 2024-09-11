@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: multihash
+Version: 0.1.1
+Summary: multihash implementation in Python
+Home-page: https://github.com/tehmaze/python-multihash
+Author: Wijnand Modderman-Lenstra
+Author-email: maze@pyth0n.org
+Maintainer: Wijnand Modderman-Lenstra
+Maintainer-email: maze@pyth0n.org
+License: MIT
+Keywords: multihash sha1 sha2 sha3 blake2
+Platform: POSIX
+Platform: Windows
+

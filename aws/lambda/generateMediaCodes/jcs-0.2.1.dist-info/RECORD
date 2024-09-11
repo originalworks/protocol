@@ -1,0 +1,10 @@
+jcs-0.2.1.dist-info/INSTALLER,sha256=zuuue4knoyJ-UwPPXg8fezS7VCrXJQrAP7zeNuwvFQg,4
+jcs-0.2.1.dist-info/METADATA,sha256=EHSNwvqWT2DlNdStZyR5T65V_DEtiJ7dWr28tdjIG94,1382
+jcs-0.2.1.dist-info/RECORD,,
+jcs-0.2.1.dist-info/WHEEL,sha256=y3eDiaFVSNTPbgzfNn0nYn5tEn1cX6WrdetDlQM4xWw,83
+jcs/__init__.py,sha256=bBQXrbWqOi_WT6xKopp1v5Kr9Wu8R-Dhg6qI2VEJsVU,85
+jcs/__pycache__/__init__.cpython-310.pyc,,
+jcs/__pycache__/_jcs.cpython-310.pyc,,
+jcs/__pycache__/ntoj.cpython-310.pyc,,
+jcs/_jcs.py,sha256=80zZ9Yid-o7ARfXCuj-Uw25foRMzCGB15VgDBBoAiH4,18228
+jcs/ntoj.py,sha256=Ct8Sp4NJhuszHAA-P2CTQM0YQ-vw0Luly9NsN8vVt30,3954
