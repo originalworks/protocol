@@ -8,10 +8,11 @@ s3_client = boto3.client('s3')
 
 def lambda_handler(event, context):
     bucket_name = event['bucket_name']
-    zip_key = event['zip_key']  # Example: "example/file1.zip"
+    zip_key = event['zip_key']  # Example: "revelator/testfile1.zip"
 
-    # Extract the base file name from the zip_key (e.g., "file1")
-    base_name = os.path.splitext(os.path.basename(zip_key))[0]
+    # Extract the path (e.g., "revelator") and base file name (e.g., "testfile1")
+    zip_key_path = os.path.dirname(zip_key)  # "revelator"
+    base_name = os.path.splitext(os.path.basename(zip_key))[0]  # "testfile1"
     
     # Create a temporary directory
     with tempfile.TemporaryDirectory() as tmp_dir:
@@ -31,8 +32,9 @@ def lambda_handler(event, context):
         for root, _, files in os.walk(tmp_dir):
             for file in files:
                 file_path = os.path.join(root, file)
-                # Create a new S3 key for each file (e.g., "example/unzipped/file1/file.mp3")
-                new_key = f'example/unzipped/{base_name}/{file}'
+                
+                # New S3 key for each file, including zip_key_path (e.g., "unzipped/revelator/testfile1/file.mp3")
+                new_key = f'unzipped/{zip_key_path}/{base_name}/{file}'
                 
                 # Upload the file to S3
                 s3_client.upload_file(file_path, bucket_name, new_key)
