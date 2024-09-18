@@ -32,6 +32,10 @@ def lambda_handler(event, context):
         for root, _, files in os.walk(tmp_dir):
             for file in files:
                 file_path = os.path.join(root, file)
+
+                # Skip uploading the zip file itself (in case it somehow remains)
+                if file == 'file.zip':
+                    continue
                 
                 # New S3 key for each file, including zip_key_path (e.g., "unzipped/revelator/testfile1/file.mp3")
                 new_key = f'unzipped/{zip_key_path}/{base_name}/{file}'
