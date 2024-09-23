@@ -1,8 +1,6 @@
 import json
 import boto3
-import multihash
-from cid import make_cid
-from cid import make_cid_v1
+from ipfs_cid import cid_sha256_hash
 import os
 import tempfile
 
@@ -23,11 +21,10 @@ def lambda_handler(event, context):
             # Download the file from S3
             s3_client.download_file(bucket_name, s3_key, file_path)
 
-            # Generate the CIDv1 hash
+            # Generate the CIDv1 hash using ipfs-cid
             with open(file_path, 'rb') as f:
                 file_data = f.read()
-                digest = multihash.digest(file_data, 'sha2-256')
-                cidv1 = make_cid(1, 'raw', digest)
+                cidv1 = cid_sha256_hash(file_data)
 
             # Try to find the ISCC code if it exists
             iscc_code = next((item['iscc_code'] for item in iscc_data if item['s3_key'] == s3_key), None)
@@ -36,7 +33,7 @@ def lambda_handler(event, context):
             final_output.append({
                 'file_name': file_name,
                 'iscc_code': iscc_code,  # This will be None for non-media files
-                'cidv1': str(cidv1)
+                'cidv1': cidv1
             })
 
     return {
