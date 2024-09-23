@@ -2,6 +2,7 @@ import json
 import boto3
 import multihash
 from cid import make_cid
+from cid import make_cid_v1
 import os
 import tempfile
 
