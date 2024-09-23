@@ -1,0 +1,14 @@
+ipfs_cid-1.0.0.dist-info/INSTALLER,sha256=zuuue4knoyJ-UwPPXg8fezS7VCrXJQrAP7zeNuwvFQg,4
+ipfs_cid-1.0.0.dist-info/LICENSE.md,sha256=uHBveqoMRhLQtab65zQ84orzMJZMDEi86Jqea6MIP0E,1069
+ipfs_cid-1.0.0.dist-info/METADATA,sha256=vLf0nBA0T9BtUfYcr86uqHPwTpMBDTA6wBwsqSG9_-o,3994
+ipfs_cid-1.0.0.dist-info/RECORD,,
+ipfs_cid-1.0.0.dist-info/REQUESTED,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+ipfs_cid-1.0.0.dist-info/WHEEL,sha256=vVCvjcmxuUltf8cYhJ0sJMRDLr1XsPuxEId8YDzbyCY,88
+ipfs_cid/__init__.py,sha256=ADv9dpudGfY6PlTJpobkDUsUzCjvH9tlIwrzXrmrBf8,127
+ipfs_cid/__pycache__/__init__.cpython-310.pyc,,
+ipfs_cid/__pycache__/base32.cpython-310.pyc,,
+ipfs_cid/__pycache__/cid.cpython-310.pyc,,
+ipfs_cid/__pycache__/sha256.cpython-310.pyc,,
+ipfs_cid/base32.py,sha256=UtAYS2X9SC3e4sq8jtsjz7mtooFpkfQgwDQI0aEd-KY,543
+ipfs_cid/cid.py,sha256=F39M3hQcn_JEOQBrXM4uIqLcD5ZrfPtVIL70JHcSMeQ,973
+ipfs_cid/sha256.py,sha256=Oy5tRbrOiPzClhc5NIyPwkjuXEKwTR4jmsg_ue8OZ9s,506
