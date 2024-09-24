@@ -1,0 +1,9 @@
+[package]
+name = "ow_blob_codec"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+c-kzg = "2.0.0"
+miniz_oxide = "0.8.0"
+quick-xml = "0.36.2"
