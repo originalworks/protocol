@@ -1,3 +1,4 @@
+use crate::errors::OwCodecError;
 use quick_xml::events::Event;
 use quick_xml::Reader;
 use std::error::Error;
@@ -5,22 +6,28 @@ use std::path::Path;
 use std::{fs::File, io::Read};
 
 pub fn validate_xml(path: &Path) -> Result<&Path, Box<dyn Error>> {
-    let mut file = File::open(path).unwrap();
+    let mut file = File::open(path)?;
     let mut file_buffer = Vec::new();
-    file.read_to_end(&mut file_buffer).unwrap();
+    file.read_to_end(&mut file_buffer)?;
 
     if file_buffer.len() == 0 {
-        panic!("Empty file at: {}", path.display());
+        return Err(Box::new(OwCodecError::BlobOverflowError(
+            path.to_string_lossy().to_string(),
+        )));
     }
 
-    let mut reader = Reader::from_file(&path).unwrap();
+    let mut reader = Reader::from_file(&path)?;
     let mut buffer = Vec::new();
 
     loop {
         match reader.read_event_into(&mut buffer) {
             Ok(Event::Eof) => break,
             Ok(_) => (),
-            Err(_) => panic!("Invalid xml file at: {}", path.display()),
+            Err(_) => {
+                return Err(Box::new(OwCodecError::CorruptedXmlFile(
+                    path.to_string_lossy().to_string(),
+                )))
+            }
         }
         buffer.clear();
     }

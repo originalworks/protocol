@@ -7,10 +7,10 @@ use std::{fs::File, io::Read};
 const RAW_CHUNK_SIZE: usize = BYTES_PER_FIELD_ELEMENT - 1;
 
 pub fn file_to_vec(path: &Path) -> Result<Vec<u8>, Box<dyn Error>> {
-    let mut file = File::open(path).unwrap();
+    let mut file = File::open(path)?;
 
     let mut file_buffer = Vec::new();
-    file.read_to_end(&mut file_buffer).unwrap();
+    file.read_to_end(&mut file_buffer)?;
 
     file_buffer = compress_to_vec(&file_buffer, 10);
 
