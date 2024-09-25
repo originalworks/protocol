@@ -59,7 +59,7 @@
                 <DPID>PADPIDA2014120301</DPID>
             </PartyId>
 
-        <Affiliation> <!--OPTIONAL -->
+        <Affiliation> <!--INDEXED-->
                 <PartyAffiliateReference>PADPIDA2014120301</PartyAffiliateReference> <!--OR <CompanyName>My Company</CompanyName>-->
                 <Type>MusicLicensingCompany</Type>
                 <TerritoryCode>Worldwide</TerritoryCode>
