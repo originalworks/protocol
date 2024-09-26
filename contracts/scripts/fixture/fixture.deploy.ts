@@ -48,13 +48,14 @@ export async function deployFixture(): Promise<FixtureOutput> {
 
 // it's necessary to use ethers.Wallet instead of hardhatEthers.Wallet
 // as only the first one currently supports type 3 EIP4844 transaction
-async function getEthersWalletWithFunds(
+export async function getEthersWalletWithFunds(
   fundsSource: Signer
 ): Promise<HDNodeWallet> {
   const wallet = ethers.Wallet.createRandom(hardhatEthers.provider);
-  await fundsSource.sendTransaction({
+  const tx = await fundsSource.sendTransaction({
     to: wallet,
     value: ethers.parseEther("5"),
   });
+  await tx.wait();
   return wallet;
 }

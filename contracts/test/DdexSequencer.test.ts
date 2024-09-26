@@ -1,11 +1,7 @@
-import { ethers as hardhatEthers } from "hardhat";
 import { ethers } from "ethers";
-// import { kzg } from "../scripts/blobs/kzg";
-import { loadTrustedSetup } from "c-kzg";
 import { FixtureOutput } from "../scripts/fixture/fixture.types";
 import { deployFixture } from "../scripts/fixture/fixture.deploy";
 import { KzgHelper } from "../scripts/actions/kzg/kzg";
-import { DdexSequencer } from "../typechain-types";
 import { expect } from "chai";
 import { sendBlob } from "../scripts/actions/blobs/sendBlob";
 
@@ -14,11 +10,6 @@ const ZERO_BYTES32 =
 
 describe("DdexSequencer", () => {
   let fixture: FixtureOutput;
-  let kzgHelper: KzgHelper;
-
-  before(async () => {
-    kzgHelper = new KzgHelper();
-  });
 
   beforeEach(async () => {
     fixture = await deployFixture();
@@ -29,7 +20,9 @@ describe("DdexSequencer", () => {
       ddexSequencer,
       dataProviders: [dataProvider],
     } = fixture;
-    const kzgInput = kzgHelper.generate("./test/ddex-messages/new_release.xml");
+    const kzgInput = await KzgHelper.generate(
+      "./test/ddex-messages/new_release.xml"
+    );
     const blobhash = KzgHelper.blobhashFromCommitment(kzgInput.commitment);
 
     // check that the queue is emtpy
@@ -69,14 +62,12 @@ describe("DdexSequencer", () => {
 
     const blob1Result = await sendBlob(
       ddexSequencer,
-      kzgHelper,
       dataProvider,
       "./test/ddex-messages/new_release.xml"
     );
 
     const blob2Result = await sendBlob(
       ddexSequencer,
-      kzgHelper,
       dataProvider,
       "./test/ddex-messages/new_release2.xml"
     );
@@ -86,7 +77,6 @@ describe("DdexSequencer", () => {
 
     const blob3Result = await sendBlob(
       ddexSequencer,
-      kzgHelper,
       dataProvider,
       "./test/ddex-messages/new_release3.xml"
     );
@@ -103,7 +93,6 @@ describe("DdexSequencer", () => {
 
     const { blobhash: blobhash1 } = await sendBlob(
       ddexSequencer,
-      kzgHelper,
       dataProvider,
       "./test/ddex-messages/new_release.xml"
     );
@@ -114,7 +103,6 @@ describe("DdexSequencer", () => {
 
     const { blobhash: blobhash2 } = await sendBlob(
       ddexSequencer,
-      kzgHelper,
       dataProvider,
       "./test/ddex-messages/new_release2.xml"
     );
@@ -124,7 +112,6 @@ describe("DdexSequencer", () => {
 
     const { blobhash: blobhash3 } = await sendBlob(
       ddexSequencer,
-      kzgHelper,
       dataProvider,
       "./test/ddex-messages/new_release3.xml"
     );
@@ -142,7 +129,6 @@ describe("DdexSequencer", () => {
 
     const { blobhash } = await sendBlob(
       ddexSequencer,
-      kzgHelper,
       dataProvider,
       "./test/ddex-messages/new_release.xml"
     );
@@ -175,14 +161,12 @@ describe("DdexSequencer", () => {
 
     const { blobhash: blobhash1 } = await sendBlob(
       ddexSequencer,
-      kzgHelper,
       dataProvider,
       "./test/ddex-messages/new_release.xml"
     );
 
     const { blobhash: blobhash2 } = await sendBlob(
       ddexSequencer,
-      kzgHelper,
       dataProvider,
       "./test/ddex-messages/new_release2.xml"
     );
@@ -232,21 +216,18 @@ describe("DdexSequencer", () => {
 
     const { blobhash: blobhash1 } = await sendBlob(
       ddexSequencer,
-      kzgHelper,
       dataProvider,
       "./test/ddex-messages/new_release.xml"
     );
 
     const { blobhash: blobhash2 } = await sendBlob(
       ddexSequencer,
-      kzgHelper,
       dataProvider,
       "./test/ddex-messages/new_release2.xml"
     );
 
     const { blobhash: blobhash3 } = await sendBlob(
       ddexSequencer,
-      kzgHelper,
       dataProvider,
       "./test/ddex-messages/new_release3.xml"
     );

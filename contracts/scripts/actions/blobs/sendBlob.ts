@@ -4,25 +4,28 @@ import { Signer } from "ethers";
 
 export async function sendBlob(
   ddexSequencer: DdexSequencer,
-  kzgHelper: KzgHelper,
   signer: Signer,
   ddexMessagePath: string
 ) {
-  const kzgOutput = kzgHelper.generate(ddexMessagePath);
+  const kzgOutput = await KzgHelper.generate(ddexMessagePath);
   const blobhash = KzgHelper.blobhashFromCommitment(kzgOutput.commitment);
 
-  await ddexSequencer.connect(signer).submitNewBlob(kzgOutput.commitment, {
-    type: 3,
-    maxFeePerBlobGas: 10,
-    gasLimit: 1000000,
-    blobs: [
-      {
-        data: kzgOutput.blobFile,
-        proof: kzgOutput.proof,
-        commitment: kzgOutput.commitment,
-      },
-    ],
-  });
+  const tx = await ddexSequencer
+    .connect(signer)
+    .submitNewBlob(kzgOutput.commitment, {
+      type: 3,
+      maxFeePerBlobGas: 10,
+      gasLimit: 1000000,
+      blobs: [
+        {
+          data: kzgOutput.blobFile,
+          proof: kzgOutput.proof,
+          commitment: kzgOutput.commitment,
+        },
+      ],
+    });
+
+  await tx.wait();
 
   return { ...kzgOutput, blobhash };
 }
