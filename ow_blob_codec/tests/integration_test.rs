@@ -1,4 +1,4 @@
-use c_kzg::{ethereum_kzg_settings, Blob};
+use c_kzg::{ethereum_kzg_settings, Blob, KzgCommitment, KzgProof};
 use ow_blob_codec::decoder;
 use ow_blob_codec::{blob_from_dir, blob_from_file};
 use quick_xml::events::{BytesDecl, BytesEnd, BytesStart, BytesText, Event};
@@ -46,19 +46,21 @@ fn dir_roundtrip() {
 #[test]
 fn pass_kzg_verification_dir() {
     let blob = blob_from_dir(VALID_XML_DIR).unwrap();
+    let kzg_settings = ethereum_kzg_settings();
 
-    let setup = ethereum_kzg_settings(0);
+    let kzg_blob = Blob::new(blob);
+    let kzg_commitment = KzgCommitment::blob_to_kzg_commitment(&kzg_blob, kzg_settings).unwrap();
+    let kzg_proof =
+        KzgProof::compute_blob_kzg_proof(&kzg_blob, &kzg_commitment.to_bytes(), &kzg_settings)
+            .unwrap();
 
-    let kzg_blob: Blob = Blob::new(blob);
-
-    let kzg_commitment = setup.blob_to_kzg_commitment(&kzg_blob).unwrap();
-    let kzg_proof = setup
-        .compute_blob_kzg_proof(&kzg_blob, &kzg_commitment.to_bytes())
-        .unwrap();
-
-    let is_valid = setup
-        .verify_blob_kzg_proof(&kzg_blob, &kzg_commitment.to_bytes(), &kzg_proof.to_bytes())
-        .unwrap();
+    let is_valid = KzgProof::verify_blob_kzg_proof(
+        &kzg_blob,
+        &kzg_commitment.to_bytes(),
+        &kzg_proof.to_bytes(),
+        &kzg_settings,
+    )
+    .unwrap();
 
     assert!(is_valid);
 }
@@ -66,19 +68,21 @@ fn pass_kzg_verification_dir() {
 #[test]
 fn pass_kzg_verification_file() {
     let blob = blob_from_file(VALID_XML_PATH).unwrap();
+    let kzg_settings = ethereum_kzg_settings();
 
-    let setup = ethereum_kzg_settings(0);
+    let kzg_blob = Blob::new(blob);
+    let kzg_commitment = KzgCommitment::blob_to_kzg_commitment(&kzg_blob, kzg_settings).unwrap();
+    let kzg_proof =
+        KzgProof::compute_blob_kzg_proof(&kzg_blob, &kzg_commitment.to_bytes(), &kzg_settings)
+            .unwrap();
 
-    let kzg_blob: Blob = Blob::new(blob);
-
-    let kzg_commitment = setup.blob_to_kzg_commitment(&kzg_blob).unwrap();
-    let kzg_proof = setup
-        .compute_blob_kzg_proof(&kzg_blob, &kzg_commitment.to_bytes())
-        .unwrap();
-
-    let is_valid = setup
-        .verify_blob_kzg_proof(&kzg_blob, &kzg_commitment.to_bytes(), &kzg_proof.to_bytes())
-        .unwrap();
+    let is_valid = KzgProof::verify_blob_kzg_proof(
+        &kzg_blob,
+        &kzg_commitment.to_bytes(),
+        &kzg_proof.to_bytes(),
+        &kzg_settings,
+    )
+    .unwrap();
 
     assert!(is_valid);
 }
