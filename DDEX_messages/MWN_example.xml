@@ -1,4 +1,10 @@
-<MusicalWorkNotificationMessage>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ern:MusicalWorkNotificationMessage xmlns:ern="http://ddex.net/xml/mwn/10"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                   xsi:schemaLocation="http://ddex.net/xml/mwn/10 http://service.ddex.net/xml/mwn/10/release-notification.xsd" 
+                   LanguageAndScriptCode="en" AvsVersionId="1.0">
+
     <MessageHeader> <!-- Compulsory -->
         <MessageID>789012</MessageID>
         <MessageCreatedDateTime>2024-06-29T10:00:00Z</MessageCreatedDateTime>
@@ -62,4 +68,4 @@
         </LinkedResources>
 
     </MusicalWork>
-</MusicalWorkNotificationMessage>
+</ern:MusicalWorkNotificationMessage>
