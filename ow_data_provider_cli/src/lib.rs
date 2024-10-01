@@ -65,8 +65,10 @@ pub async fn run(config: Config) -> Result<(), Box<dyn Error>> {
         .wallet(wallet)
         .on_http(config.rpc_url.parse().unwrap());
 
-    let ddex_sequencer = DdexSequencerContext::build(&provider).await?;
+    let ddex_sequencer_context = DdexSequencerContext::build(&provider).await?;
     let blob_transaction_data = BlobTransactionData::build(&config).unwrap();
-    ddex_sequencer.send_blob(blob_transaction_data).await?;
+    ddex_sequencer_context
+        .send_blob(blob_transaction_data)
+        .await?;
     Ok(())
 }
