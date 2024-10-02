@@ -67,7 +67,7 @@ impl DdexSequencerContext<'_> {
     }
 
     pub async fn send_blob(
-        self,
+        &self,
         transaction_data: BlobTransactionData,
     ) -> Result<(), Box<dyn Error>> {
         let receipt = self
