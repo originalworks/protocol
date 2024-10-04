@@ -1,16 +1,11 @@
 import os
 import json
 import boto3
-from iscc_sdk import iscc_generate, dirs
+import iscc_sdk as idk
 import tempfile
 
 # Set HOME to a writable directory before importing iscc_sdk or other modules
 os.environ['HOME'] = '/tmp'
-
-# Update all dirs to point to /tmp
-dirs.user_data_dir = '/tmp/iscc_sdk/data'
-dirs.user_cache_dir = '/tmp/iscc_sdk/cache'
-dirs.user_config_dir = '/tmp/iscc_sdk/config'
 
 s3_client = boto3.client('s3')
 
@@ -29,7 +24,7 @@ def process_files(bucket_name, media_files):
                     s3_client.download_file(bucket_name, s3_key, file_path)
 
                     # Generate the ISCC code for the file
-                    iscc_code = iscc_generate(file_path)
+                    iscc_code = idk.code_iscc(file_path)
 
                     # Append the file and its ISCC code to the list
                     iscc_codes.append({
@@ -69,4 +64,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
