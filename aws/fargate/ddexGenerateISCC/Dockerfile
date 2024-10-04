@@ -1,8 +1,10 @@
 # Start with an official Python image from Docker Hub
-FROM python:3.8-slim
+# Uses Debain bookworm by default
+FROM python:3.8
 
 # Set environment variables
 ENV HOME=/tmp
+ENV ISCC_EXIV2_BIN=/usr/bin/exiv2
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
