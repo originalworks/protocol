@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     libxslt-dev \
     zlib1g-dev \
+    libmagic1 \
     && apt-get clean
 
 # Install Python packages
