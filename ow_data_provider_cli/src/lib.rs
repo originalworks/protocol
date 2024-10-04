@@ -67,6 +67,7 @@ pub async fn run(config: Config) -> Result<(), Box<dyn Error>> {
 
     let ddex_sequencer_context = DdexSequencerContext::build(&provider).await?;
     let blob_transaction_data = BlobTransactionData::build(&config).unwrap();
+    println!("sending tx...");
     ddex_sequencer_context
         .send_blob(blob_transaction_data)
         .await?;

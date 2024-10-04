@@ -7,6 +7,8 @@ pub enum OwValidatorNodeError {
     BlockNotFoundInLog(),
     QueueHeadNotFound(),
     FailedToFindBlobSidecar(String),
+    InvalidBlobLength(usize),
+    InvalidHexStringValue(String),
 }
 
 impl fmt::Display for OwValidatorNodeError {
@@ -31,6 +33,16 @@ impl fmt::Display for OwValidatorNodeError {
                     "Failed to find BlobSidecar in the beacon chain for the commitment: {}",
                     commitment
                 )
+            }
+            Self::InvalidBlobLength(blob_len) => {
+                write!(
+                    f,
+                    "Invalid blob length: expected 262146 ( = 131072 * 2 + 2), got: {}",
+                    blob_len
+                )
+            }
+            Self::InvalidHexStringValue(hex_byte) => {
+                write!(f, "Invalid hex value in blob String: {}", hex_byte)
             }
         }
     }

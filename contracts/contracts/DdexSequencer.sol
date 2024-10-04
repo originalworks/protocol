@@ -6,12 +6,17 @@ pragma solidity ^0.8.24;
 
 contract DdexSequencer is WhitelistConsumer {
     event NewBlobSubmitted(bytes commitment);
-
+    event MessageDigested(DdexMessageData data);
 
     struct Blob {
         bytes32 nextBlob;
         bool submitted;
         address proposer;
+    }
+
+    struct DdexMessageData {
+        string isrc;
+        string releaseId;
     }
 
     bytes1 public constant DATA_PROVIDERS_WHITELIST = 0x01;
@@ -59,7 +64,8 @@ contract DdexSequencer is WhitelistConsumer {
     }
 
     function submitProofOfProcessing(
-        bool proof
+        bool proof,
+        DdexMessageData[] memory messagesData
     ) external isWhitelistedOn(VALIDATORS_WHITELIST) {
         require(blobQueueHead != bytes32(0), "Queue is empty");
         bool isValid = proof; // TODO: implement actual logic of checking the proof for the blobQueueHead
@@ -67,6 +73,9 @@ contract DdexSequencer is WhitelistConsumer {
         require(isValid, "Invalid proof");
 
         _moveQueue();
+        for (uint i = 0; i < messagesData.length; i++) {
+            emit MessageDigested(messagesData[i]);
+        }
     }
 
     function submitProofForFraudulentBlob(
