@@ -137,7 +137,7 @@ describe("DdexSequencer", () => {
     expect(await ddexSequencer.blobQueueTail()).equal(blobhash);
 
     const blobDetailsBefore = await ddexSequencer.blobs(blobhash);
-    await ddexSequencer.connect(validator).submitProofOfProcessing(true);
+    await ddexSequencer.connect(validator).submitProofOfProcessing(true, []);
     const blobDetailsAfter = await ddexSequencer.blobs(blobhash);
 
     expect(await ddexSequencer.blobQueueHead()).equal(ZERO_BYTES32);
@@ -176,7 +176,7 @@ describe("DdexSequencer", () => {
     expect(await ddexSequencer.blobQueueTail()).equal(blobhash2);
 
     const blob1DetailsBefore = await ddexSequencer.blobs(blobhash1);
-    await ddexSequencer.connect(validator).submitProofOfProcessing(true);
+    await ddexSequencer.connect(validator).submitProofOfProcessing(true, []);
     const blob1DetailsAfter = await ddexSequencer.blobs(blobhash1);
 
     expect(blob1DetailsBefore.nextBlob).equal(blobhash2);
@@ -191,7 +191,7 @@ describe("DdexSequencer", () => {
     expect(await ddexSequencer.blobQueueHead()).equal(blobhash2);
     expect(await ddexSequencer.blobQueueTail()).equal(blobhash2);
     const blob2DetailsBefore = await ddexSequencer.blobs(blobhash2);
-    await ddexSequencer.connect(validator).submitProofOfProcessing(true);
+    await ddexSequencer.connect(validator).submitProofOfProcessing(true, []);
     const blob2DetailsAfter = await ddexSequencer.blobs(blobhash2);
 
     expect(blob2DetailsBefore.nextBlob).equal(ZERO_BYTES32);
@@ -237,7 +237,7 @@ describe("DdexSequencer", () => {
     expect(await ddexSequencer.blobQueueTail()).equal(blobhash3);
 
     const blob1DetailsBefore = await ddexSequencer.blobs(blobhash1);
-    await ddexSequencer.connect(validator).submitProofOfProcessing(true);
+    await ddexSequencer.connect(validator).submitProofOfProcessing(true, []);
     const blob1DetailsAfter = await ddexSequencer.blobs(blobhash1);
 
     expect(blob1DetailsBefore.nextBlob).equal(blobhash2);
@@ -252,7 +252,7 @@ describe("DdexSequencer", () => {
     expect(await ddexSequencer.blobQueueHead()).equal(blobhash2);
     expect(await ddexSequencer.blobQueueTail()).equal(blobhash3);
     const blob2DetailsBefore = await ddexSequencer.blobs(blobhash2);
-    await ddexSequencer.connect(validator).submitProofOfProcessing(true);
+    await ddexSequencer.connect(validator).submitProofOfProcessing(true, []);
     const blob2DetailsAfter = await ddexSequencer.blobs(blobhash2);
 
     expect(blob2DetailsBefore.nextBlob).equal(blobhash3);
@@ -267,7 +267,7 @@ describe("DdexSequencer", () => {
     expect(await ddexSequencer.blobQueueHead()).equal(blobhash3);
     expect(await ddexSequencer.blobQueueTail()).equal(blobhash3);
     const blob3DetailsBefore = await ddexSequencer.blobs(blobhash3);
-    await ddexSequencer.connect(validator).submitProofOfProcessing(true);
+    await ddexSequencer.connect(validator).submitProofOfProcessing(true, []);
     const blob3DetailsAfter = await ddexSequencer.blobs(blobhash3);
 
     expect(blob3DetailsBefore.nextBlob).equal(ZERO_BYTES32);
@@ -289,7 +289,8 @@ describe("DdexSequencer", () => {
       validators: [validator],
     } = fixture;
     expect(await ddexSequencer.blobQueueHead()).equal(ZERO_BYTES32);
-    await expect(ddexSequencer.connect(validator).submitProofOfProcessing(true))
-      .to.rejected;
+    await expect(
+      ddexSequencer.connect(validator).submitProofOfProcessing(true, [])
+    ).to.rejected;
   });
 });

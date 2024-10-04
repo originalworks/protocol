@@ -59,3 +59,21 @@ export async function getEthersWalletWithFunds(
   await tx.wait();
   return wallet;
 }
+
+// it's necessary to use ethers.Wallet instead of hardhatEthers.Wallet
+// as only the first one currently supports type 3 EIP4844 transaction
+// This function works only with Kurtosis testnet setup!!!!
+export function getKurtosisEthersWallets(): HDNodeWallet[] {
+  const phrase = `${process.env.KURTOSIS_MNEMONIC}`;
+  const mnemonic = ethers.Mnemonic.fromPhrase(phrase);
+  const wallets: HDNodeWallet[] = [];
+  for (let i = 0; i < 20; i++) {
+    wallets.push(
+      ethers.HDNodeWallet.fromMnemonic(mnemonic, `m/44'/60'/0'/0/${i}`).connect(
+        hardhatEthers.provider
+      )
+    );
+  }
+
+  return wallets;
+}
