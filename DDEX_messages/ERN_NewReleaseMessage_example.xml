@@ -38,14 +38,15 @@
     distributor personnel that that record company or distributor requests be
     granted access to the DSP’s systems to administer a release;
     -->
-    <ReleaseAdmin>
-        <!-- ReleaseAdminId identifies a group of record company personnel to be granted
-         access to the MessageRecipient’s systems to administer the Release. Note that the communication of user access credentials is out of scope for the NewReleaseMessage.
-        -->
+    <!-- OPTIONAL  
+    ReleaseAdminId identifies a group of record company personnel to be granted
+    access to the MessageRecipient’s systems to administer the Release. Note that the communication of user access credentials is out of scope for the NewReleaseMessage.
+    <ReleaseAdmin> 
         <ReleaseAdminId>PADPIDA2014120301</ReleaseAdminId> 
-        <PersonnelDescription>Example Sender</PersonnelDescription> <!-- INDEXED-->
+        <PersonnelDescription>Example Sender</PersonnelDescription>
         <SystemDescription></SystemDescription>
     </ReleaseAdmin>
+    -->
 
     <!-- PartyList communicates metadata about the parties that contributed to
     the creation, publication and/or distribution of the releases and resources
@@ -54,8 +55,10 @@
     <PartyList>
         <Party> <!-- Parties can either be in a PartyID (DDEX) or PartyName-->
             <PartyReference>PADPIDA2014120301</PartyReference>
+            
             <PartyId>
-                <ISNI>0000000080549162</ISNI> <!--ISO 27729 -->
+                <!-- ISNI is ISO 27729 -->
+                <ISNI>0000000080549162</ISNI>
                 <DPID>PADPIDA2014120301</DPID>
             </PartyId>
 

@@ -1,6 +1,6 @@
-<DSRMessage xmlns="http://ddex.net/xml/dsr/21"
+<dsr:SalesReportToRecordCompanyMessage xmlns="http://service.ddex.net/xml/dsr/43/"
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-            xsi:schemaLocation="http://ddex.net/xml/dsr/21 http://ddex.net/xml/dsr/21/dsr.xsd"
+            xsi:schemaLocation="http://service.ddex.net/xml/dsr/43 http://service.ddex.net/xml/dsr/43/sales-reporting.xsd"
             LanguageAndScriptCode="en">
     
     <MessageHeader>
@@ -127,4 +127,4 @@
             </Revenue>
         </SalesTransaction>
     </SalesReport>
-</DSRMessage>
+</dsr:SalesReportToRecordCompanyMessage>
