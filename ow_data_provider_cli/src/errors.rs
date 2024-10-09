@@ -6,6 +6,9 @@ pub enum OwDataProviderCliError {
     MissingEnvVar(String),
     MissingCliArg(String),
     InvalidBlobProof(),
+    SourcePathIsNotDir(String),
+    EmptySourcePathFolder(String),
+    ErrorReadingFile(String),
 }
 
 impl fmt::Display for OwDataProviderCliError {
@@ -19,6 +22,15 @@ impl fmt::Display for OwDataProviderCliError {
             }
             Self::InvalidBlobProof() => {
                 write!(f, "c_kzg error during proof validation")
+            }
+            Self::SourcePathIsNotDir(path) => {
+                write!(f, "Provided folder_path is not a directory: {}", path)
+            }
+            Self::EmptySourcePathFolder(path) => {
+                write!(f, "Folder under provided folder_path is empty: {}", path)
+            }
+            Self::ErrorReadingFile(file_path) => {
+                write!(f, "Error while reading file from: {}", file_path)
             }
         }
     }

@@ -1,9 +1,9 @@
 mod beacon_chain;
 mod circuit_mock;
 mod constants;
-
 mod ddex_sequencer;
 mod errors;
+mod ipfs;
 
 use alloy::network::{Ethereum, EthereumWallet};
 use alloy::primitives::{Bytes, FixedBytes};
@@ -105,10 +105,23 @@ async fn validate_blobs(
     let decoded = ow_blob_codec::decoder::blob_to_vecs(blob).unwrap();
 
     let ddex_messages_data = circuit_mock::extract_message_data(&decoded)?;
+
+    let tx_input = ddex_messages_data
+        .iter()
+        .map(|emittable_values| emittable_values.emittable_data.clone())
+        .collect();
+
+    let ipfs_cids = ddex_messages_data
+        .iter()
+        .map(|emittable_values| emittable_values.image_ipfs_cid.clone())
+        .collect();
+
+    ipfs::check_file_accessibility(ipfs_cids).await?;
+
     println!("sending tx...");
     let receipt = ddex_sequencer_context
         .contract
-        .submitProofOfProcessing(true, ddex_messages_data)
+        .submitProofOfProcessing(true, tx_input)
         .send()
         .await?
         .get_receipt()
