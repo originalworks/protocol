@@ -9,6 +9,7 @@ pub enum OwValidatorNodeError {
     FailedToFindBlobSidecar(String),
     InvalidBlobLength(usize),
     InvalidHexStringValue(String),
+    ImageFileNotFoundInIpfs(String),
 }
 
 impl fmt::Display for OwValidatorNodeError {
@@ -43,6 +44,9 @@ impl fmt::Display for OwValidatorNodeError {
             }
             Self::InvalidHexStringValue(hex_byte) => {
                 write!(f, "Invalid hex value in blob String: {}", hex_byte)
+            }
+            Self::ImageFileNotFoundInIpfs(cid) => {
+                write!(f, "Image file not found in IPFS node: {}", cid)
             }
         }
     }

@@ -2,6 +2,7 @@ mod blob;
 mod constants;
 mod ddex_sequencer;
 mod errors;
+mod ipfs;
 
 use alloy::network::EthereumWallet;
 use alloy::providers::ProviderBuilder;
@@ -54,6 +55,8 @@ impl Config {
 }
 
 pub async fn run(config: Config) -> Result<(), Box<dyn Error>> {
+    // let ipfs_cid = ipfs::pin_file("./tests/test.xml".to_string()).await?;
+    ipfs::create_output_files(&config.folder_path).await?;
     let private_key_signer: PrivateKeySigner = config
         .private_key
         .parse()
@@ -66,7 +69,7 @@ pub async fn run(config: Config) -> Result<(), Box<dyn Error>> {
         .on_http(config.rpc_url.parse().unwrap());
 
     let ddex_sequencer_context = DdexSequencerContext::build(&provider).await?;
-    let blob_transaction_data = BlobTransactionData::build(&config).unwrap();
+    let blob_transaction_data = BlobTransactionData::build().unwrap();
     println!("sending tx...");
     ddex_sequencer_context
         .send_blob(blob_transaction_data)
