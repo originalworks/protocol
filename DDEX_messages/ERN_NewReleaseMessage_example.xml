@@ -199,6 +199,16 @@
             <ResourceRightsController>
                 <RightsControllerPartyReference>PExampleReference1</RightsControllerPartyReference>
                 <RightsControlType>RoyaltyAdministrator</RightsControlType>
+                <RightSharePercentage>100</RightSharePercentage>
+                <DelegatedUsageRights>
+                    <UseType>Stream</UseType>
+                    <TerritoryOfRightsDelegation>Worldwide</TerritoryOfRightsDelegation>
+                </DelegatedUsageRights>
+                <DelegatedUsageRights>
+                    <UseType>ConditionalDownload</UseType>
+                    <UseType>PermanentDownload</UseType>
+                    <TerritoryOfRightsDelegation>ES</TerritoryOfRightsDelegation>
+                </DelegatedUsageRights>
             </ResourceRightsController>
             <Duration>PT2M28S</Duration>
             <CreationDate IsApproximate="true">1993-12-01</CreationDate>
