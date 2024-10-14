@@ -19,7 +19,7 @@
     <MessageHeader>
         <MessageId>MSG12345-01</MessageId>
         <MessageSender>
-            <PartyId>PADPIDA2014120301</PartyId>
+            <PartyId>PADPIDA2014021302H</PartyId>
             <PartyName>
                 <FullName>Example Sender</FullName>
             </PartyName>
@@ -42,7 +42,7 @@
     ReleaseAdminId identifies a group of record company personnel to be granted
     access to the MessageRecipient’s systems to administer the Release. Note that the communication of user access credentials is out of scope for the NewReleaseMessage.
     <ReleaseAdmin> 
-        <ReleaseAdminId>PADPIDA2014120301</ReleaseAdminId> 
+        <ReleaseAdminId>PADPIDA2014021302H</ReleaseAdminId> 
         <PersonnelDescription>Example Sender</PersonnelDescription>
         <SystemDescription></SystemDescription>
     </ReleaseAdmin>
@@ -54,16 +54,16 @@
     artists, session musicians, engineers or record companies;-->
     <PartyList>
         <Party> <!-- Parties can either be in a PartyID (DDEX) or PartyName-->
-            <PartyReference>PADPIDA2014120301</PartyReference>
+            <PartyReference>PADPIDA2014021302H</PartyReference>
             
             <PartyId>
                 <!-- ISNI is ISO 27729 -->
                 <ISNI>0000000080549162</ISNI>
-                <DPID>PADPIDA2014120301</DPID>
+                <DPID>PADPIDA2014021302H</DPID>
             </PartyId>
 
         <Affiliation> <!--INDEXED-->
-                <PartyAffiliateReference>PADPIDA2014120301</PartyAffiliateReference> <!--OR <CompanyName>My Company</CompanyName>-->
+                <PartyAffiliateReference>PADPIDA2014021302H</PartyAffiliateReference> <!--OR <CompanyName>My Company</CompanyName>-->
                 <Type>MusicLicensingCompany</Type>
                 <TerritoryCode>Worldwide</TerritoryCode>
                 <ValidityPeriod>  <!--OPTIONAL-->
@@ -115,7 +115,7 @@
                     <PLineText>2024 My company, LLC</PLineText>
                 </PLine>
                 <RecordingMode>Stereo</RecordingMode>
-                <TechnicalDetails>
+                <TechnicalDetails ApplicableTerritoryCode="Worldwide">
                     <TechnicalResourceDetailsReference>T1</TechnicalResourceDetailsReference>
                     <DeliveryFile>
                         <Type>AudioFile</Type>
@@ -127,7 +127,6 @@
                             <Version></Version>
                             <Parameter></Parameter>
                         </Fingerprint>
-
                         <Fingerprint>
                             <Algorithm Namespace="ACRCloud" UserDefinedValue="ACRCloud:Passed">UserDefined</Algorithm>
                             <Version></Version>
