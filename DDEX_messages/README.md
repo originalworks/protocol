@@ -70,3 +70,16 @@ All fields are tagged as `<!-- Compulsory -->` or `<!-- Optional -->`.
 `<!-- Compulsory -->` are compulsary fields, and messages will be rejected if they are not included.
 `<!-- Optional -->` can either exist or not.
 `<!-- Needs to exist --> ` is a field that needs to exist in either the private or the public part of the message, but not required on both.
+
+
+## Test validation
+
+For v4.3
+```bash
+curl https://raw.githubusercontent.com/originalworks/protocol/main/DDEX_messages/ERN_NewReleaseMessage_example.xml | xmllint --noout --schema http://ddex.net/xml/ern/43/release-notification.xsd -
+```
+
+For v4.3.1
+```bash
+curl https://raw.githubusercontent.com/originalworks/protocol/main/DDEX_messages/ERN_NewReleaseMessage_example.xml | xmllint --noout --schema http://ddex.net/xml/ern/431/release-notification.xsd -
+```
