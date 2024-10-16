@@ -55,7 +55,6 @@ impl Config {
 }
 
 pub async fn run(config: Config) -> Result<(), Box<dyn Error>> {
-    // let ipfs_cid = ipfs::pin_file("./tests/test.xml".to_string()).await?;
     ipfs::create_output_files(&config.folder_path).await?;
     let private_key_signer: PrivateKeySigner = config
         .private_key

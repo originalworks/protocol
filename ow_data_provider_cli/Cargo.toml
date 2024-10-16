@@ -14,3 +14,6 @@ tokio-util = "0.7.12"
 serde = "1.0.210"
 infer = "0.16.0"
 quick-xml = "0.36.2"
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(rust_analyzer)'] }
