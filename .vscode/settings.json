@@ -3,5 +3,6 @@
         "/ow_data_provider_cli/Cargo.toml",
         "/ow_validator_node/Cargo.toml",
         "/ow_blob_codec/Cargo.toml"
-      ]
+      ],
+      "rust-analyzer.cargo.features": "all"
 }
