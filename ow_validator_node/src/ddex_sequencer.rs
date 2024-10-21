@@ -99,7 +99,6 @@ impl DdexSequencerContext<'_> {
         &self,
         config: &Config,
     ) -> Result<QueueHeadData, Box<dyn Error>> {
-        println!("Subscribed to queue, waiting for new blobs...");
         let ws_url = WsConnect::new(&config.ws_url);
         let ws_provider = ProviderBuilder::new().on_ws(ws_url).await?;
 
@@ -107,6 +106,7 @@ impl DdexSequencerContext<'_> {
             .address(constants::DDEX_SEQUENCER_ADDRESS)
             .event(DdexSequencer::NewBlobSubmitted::SIGNATURE);
 
+        println!("Subscribed to queue, waiting for new blobs...");
         let subscription = ws_provider.subscribe_logs(&filter).await?;
         let mut stream = subscription.into_stream();
 
