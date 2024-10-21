@@ -177,7 +177,29 @@ pub async fn create_output_files(
             folder_path.to_string(),
         )));
     }
+
+    print_output(&result)?;
     Ok(result)
+}
+
+fn print_output(output: &Vec<AssetDirProcessingContext>) -> Result<(), Box<dyn Error>> {
+    for entry in output {
+        println!("PROCESSED DDEX MESSAGE:");
+        println!(
+            "Source files: image: {}; XML: {}",
+            entry.input_image_path, entry.input_xml_path
+        );
+        println!(
+            "Image file {} was pined to IPFS under CID: {}",
+            entry.input_image_path, entry.image_cid
+        );
+        println!(
+            "CID: {} was included in the output file: {}",
+            entry.image_cid, entry.output_xml_path
+        );
+        println!("----------")
+    }
+    Ok(())
 }
 
 #[cfg(test)]
