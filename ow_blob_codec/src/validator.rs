@@ -35,23 +35,28 @@ pub fn validate_xml(path: &Path) -> Result<&Path, Box<dyn Error>> {
     Ok(path)
 }
 
-#[test]
-#[should_panic]
-fn panic_for_empty_file() {
-    let path = Path::new("./tests/assets/corrupted_xml/empty.xml");
-    validate_xml(path).unwrap();
-}
+#[cfg(test)]
+mod tests {
+    use super::*;
 
-#[test]
-#[should_panic]
-fn panic_for_corrupted_xml() {
-    let path = Path::new("./tests/assets/corrupted_xml/corrupted.xml");
-    validate_xml(path).unwrap();
-}
+    #[test]
+    #[should_panic]
+    fn panic_for_empty_file() {
+        let path = Path::new("./tests/assets/corrupted_xml/empty.xml");
+        validate_xml(path).unwrap();
+    }
 
-#[test]
-fn pass_for_valid_xml() {
-    validate_xml(Path::new("./tests/assets/valid_xml/ERN_example_1.xml")).unwrap();
-    validate_xml(Path::new("./tests/assets/valid_xml/ERN_example_2.xml")).unwrap();
-    validate_xml(Path::new("./tests/assets/valid_xml/ERN_example_3.xml")).unwrap();
+    #[test]
+    #[should_panic]
+    fn panic_for_corrupted_xml() {
+        let path = Path::new("./tests/assets/corrupted_xml/corrupted.xml");
+        validate_xml(path).unwrap();
+    }
+
+    #[test]
+    fn pass_for_valid_xml() {
+        validate_xml(Path::new("./tests/assets/valid_xml/ERN_example_1.xml")).unwrap();
+        validate_xml(Path::new("./tests/assets/valid_xml/ERN_example_2.xml")).unwrap();
+        validate_xml(Path::new("./tests/assets/valid_xml/ERN_example_3.xml")).unwrap();
+    }
 }
