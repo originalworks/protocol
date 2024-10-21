@@ -35,14 +35,19 @@ pub fn file_to_vec(path: &Path) -> Result<Vec<u8>, Box<dyn Error>> {
     Ok(encoded)
 }
 
-#[test]
-fn encoded_file_is_smaller() {
-    let path = Path::new("./tests/assets/valid_xml/ERN_example_1.xml");
-    let mut file = File::open(path).unwrap();
-    let mut file_buffer = Vec::new();
-    file.read_to_end(&mut file_buffer).unwrap();
+#[cfg(test)]
+mod tests {
+    use super::*;
 
-    let encoded = file_to_vec(path).unwrap();
+    #[test]
+    fn encoded_file_is_smaller() {
+        let path = Path::new("./tests/assets/valid_xml/ERN_example_1.xml");
+        let mut file = File::open(path).unwrap();
+        let mut file_buffer = Vec::new();
+        file.read_to_end(&mut file_buffer).unwrap();
 
-    assert!(encoded.len() < file_buffer.len());
+        let encoded = file_to_vec(path).unwrap();
+
+        assert!(encoded.len() < file_buffer.len());
+    }
 }

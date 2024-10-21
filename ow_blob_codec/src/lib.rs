@@ -86,41 +86,45 @@ pub fn blob_from_file(path: &str) -> Result<[u8; BYTES_PER_BLOB], Box<dyn Error>
     }
     Ok(kzg_blob)
 }
+#[cfg(test)]
+mod tests {
+    use super::*;
 
-#[test]
-#[should_panic]
-fn panic_for_empty_dir() {
-    blob_from_dir("./tests/assets").unwrap();
-}
+    #[test]
+    #[should_panic]
+    fn panic_for_empty_dir() {
+        blob_from_dir("./tests/assets").unwrap();
+    }
 
-#[test]
-#[should_panic]
-fn panic_for_non_dir() {
-    blob_from_dir("./tests/assets/pierogi").unwrap();
-}
+    #[test]
+    #[should_panic]
+    fn panic_for_non_dir() {
+        blob_from_dir("./tests/assets/pierogi").unwrap();
+    }
 
-#[test]
-#[should_panic]
-fn panic_for_non_xml_file() {
-    blob_from_file("./tests/assets/test.txt").unwrap();
-}
+    #[test]
+    #[should_panic]
+    fn panic_for_non_xml_file() {
+        blob_from_file("./tests/assets/test.txt").unwrap();
+    }
 
-#[test]
-#[should_panic]
-fn panic_for_wrong_path() {
-    blob_from_file("./tests/kapusta").unwrap();
-}
+    #[test]
+    #[should_panic]
+    fn panic_for_wrong_path() {
+        blob_from_file("./tests/kapusta").unwrap();
+    }
 
-#[test]
-fn encode_file_into_blob_from_valid_xml() {
-    let blob = blob_from_file("./tests/assets/valid_xml/ERN_example_1.xml").unwrap();
+    #[test]
+    fn encode_file_into_blob_from_valid_xml() {
+        let blob = blob_from_file("./tests/assets/valid_xml/ERN_example_1.xml").unwrap();
 
-    assert_ne!(blob, [0; BYTES_PER_BLOB]);
-}
+        assert_ne!(blob, [0; BYTES_PER_BLOB]);
+    }
 
-#[test]
-fn encode_dir_files_into_blob() {
-    let blob = blob_from_dir("./tests/assets/valid_xml").unwrap();
+    #[test]
+    fn encode_dir_files_into_blob() {
+        let blob = blob_from_dir("./tests/assets/valid_xml").unwrap();
 
-    assert_ne!(blob, [0; BYTES_PER_BLOB]);
+        assert_ne!(blob, [0; BYTES_PER_BLOB]);
+    }
 }
