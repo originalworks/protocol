@@ -10,8 +10,7 @@ WHITELISTED_PARTY_IDS = ["PADPIDA2014021302H"]
 def validate_xml(xml_file, schema_url):
     try:
         parser = etree.XMLParser(recover=True)
-        with open(xml_file, 'rb') as f:
-            xml_doc = etree.parse(f, parser)
+        xml_doc = etree.parse(xml_file, parser)
 
         schema_doc = etree.parse(schema_url)
         schema = etree.XMLSchema(schema_doc)
@@ -28,12 +27,8 @@ def validate_xml(xml_file, schema_url):
         logging.error(f"CHECK 1... FAIL. Schema validation - Error: {e}")
         return False
 
-def check_whitelisted_party_id(xml_file):
+def check_whitelisted_party_id(xml_doc):
     try:
-        parser = etree.XMLParser(remove_blank_text=True)
-        with open(xml_file, 'rb') as f:
-            xml_doc = etree.parse(f, parser)
-        
         namespaces = {'ern': 'http://ddex.net/xml/ern/43'}
         party_id_xpath = "//ern:NewReleaseMessage/*[local-name()='MessageHeader']/*[local-name()='MessageSender']/*[local-name()='PartyId']"
         party_id_elements = xml_doc.xpath(party_id_xpath, namespaces=namespaces)
@@ -54,12 +49,35 @@ def check_whitelisted_party_id(xml_file):
         logging.error(f"CHECK 2... FAIL. PartyId check - Error: {e}")
         return False
 
-def check_affiliation_type_for_sender(xml_file):
+def check_right_share_percentage(xml_doc):
+    """
+    Check 3: Ensure that the RightSharePercentage inside ResourceRightsController,
+    inside SoundRecording, inside ResourceList is never negative and never over 100.
+    """
     try:
-        parser = etree.XMLParser(remove_blank_text=True)
-        with open(xml_file, 'rb') as f:
-            xml_doc = etree.parse(f, parser)
-        
+        namespaces = {'ern': 'http://ddex.net/xml/ern/43'}
+        right_share_percentage_xpath = "//ern:NewReleaseMessage/*[local-name()='ResourceList']/*[local-name()='SoundRecording']/*[local-name()='ResourceRightsController']/*[local-name()='RightSharePercentage']"
+        right_share_elements = xml_doc.xpath(right_share_percentage_xpath, namespaces=namespaces)
+
+        if not right_share_elements:
+            logging.info("CHECK 3... PASS. No RightSharePercentage found, skipping check")
+            return True
+
+        for right_share_element in right_share_elements:
+            right_share_value = float(right_share_element.text.strip())
+            if right_share_value < 0 or right_share_value > 100:
+                logging.error(f"CHECK 3... FAIL. RightSharePercentage '{right_share_value}' is out of range (0-100)")
+                return False
+
+        logging.info("CHECK 3... PASS. RightSharePercentage values are valid")
+        return True
+
+    except Exception as e:
+        logging.error(f"CHECK 3... FAIL. RightSharePercentage check - Error: {e}")
+        return False
+
+def check_affiliation_type_for_sender(xml_doc):
+    try:
         namespaces = {'ern': 'http://ddex.net/xml/ern/43'}
         party_id_xpath = "//ern:NewReleaseMessage/*[local-name()='MessageHeader']/*[local-name()='MessageSender']/*[local-name()='PartyId']"
         party_id_elements = xml_doc.xpath(party_id_xpath, namespaces=namespaces)
@@ -96,12 +114,8 @@ def check_affiliation_type_for_sender(xml_file):
         logging.error(f"CHECK 4... FAIL. Affiliation Type check - Error: {e}")
         return False
 
-def check_rights_type_for_sender(xml_file):
+def check_rights_type_for_sender(xml_doc):
     try:
-        parser = etree.XMLParser(remove_blank_text=True)
-        with open(xml_file, 'rb') as f:
-            xml_doc = etree.parse(f, parser)
-        
         namespaces = {'ern': 'http://ddex.net/xml/ern/43'}
         party_id_xpath = "//ern:NewReleaseMessage/*[local-name()='MessageHeader']/*[local-name()='MessageSender']/*[local-name()='PartyId']"
         party_id_elements = xml_doc.xpath(party_id_xpath, namespaces=namespaces)
@@ -139,12 +153,8 @@ def check_rights_type_for_sender(xml_file):
         logging.error(f"CHECK 5... FAIL. RightsType check - Error: {e}")
         return False
 
-def check_isrc_in_sound_recording(xml_file):
+def check_isrc_in_sound_recording(xml_doc):
     try:
-        parser = etree.XMLParser(remove_blank_text=True)
-        with open(xml_file, 'rb') as f:
-            xml_doc = etree.parse(f, parser)
-
         namespaces = {'ern': 'http://ddex.net/xml/ern/43'}
         isrc_xpath = "//ern:NewReleaseMessage/*[local-name()='ResourceList']/*[local-name()='SoundRecording']/*[local-name()='SoundRecordingEdition']/*[local-name()='ResourceId']/*[local-name()='ISRC']"
         isrc_elements = xml_doc.xpath(isrc_xpath, namespaces=namespaces)
@@ -154,24 +164,26 @@ def check_isrc_in_sound_recording(xml_file):
             return False
 
         isrc_value = isrc_elements[0].text.strip()
-        if len(isrc_value) == 12 and isrc_value.isdigit():
-            logging.info("CHECK 6... PASS. ISRC exists and is 12 digits long")
+        if len(isrc_value) == 12 and isrc_value.isalnum():
+            logging.info("CHECK 6... PASS. ISRC exists and is 12 characters long")
             return True
         else:
-            logging.error(f"CHECK 6... FAIL. ISRC '{isrc_value}' is not valid (should be 12 digits long)")
+            logging.error(f"CHECK 6... FAIL. ISRC '{isrc_value}' is not valid (should be 12 characters long)")
             return False
 
     except Exception as e:
         logging.error(f"CHECK 6... FAIL. ISRC validation - Error: {e}")
         return False
 
-def check_rights_controller_is_music_licensing_company(xml_file):
+def check_rights_controller_is_music_licensing_company(xml_doc):
+    """
+    Check 7: Ensure that the RightsControllerPartyReference inside ResourceRightsController,
+    inside SoundRecording, inside ResourceList corresponds to a Party that is listed 
+    as a MusicLicensingCompany in the PartyList.
+    """
     try:
-        parser = etree.XMLParser(remove_blank_text=True)
-        with open(xml_file, 'rb') as f:
-            xml_doc = etree.parse(f, parser)
-
         namespaces = {'ern': 'http://ddex.net/xml/ern/43'}
+
         music_licensing_company_xpath = "//ern:NewReleaseMessage/*[local-name()='PartyList']/*[local-name()='Party'][*[local-name()='Affiliation']/*[local-name()='Type']='MusicLicensingCompany']/*[local-name()='PartyReference']"
         music_licensing_company_elements = xml_doc.xpath(music_licensing_company_xpath, namespaces=namespaces)
 
@@ -201,13 +213,14 @@ def check_rights_controller_is_music_licensing_company(xml_file):
         logging.error(f"CHECK 7... FAIL. RightsController check - Error: {e}")
         return False
 
-def check_rights_control_type_is_royalty_administrator(xml_file):
+def check_rights_control_type_is_royalty_administrator(xml_doc):
+    """
+    Check 8: Ensure that the RightsControlType inside ResourceRightsController,
+    inside SoundRecording, inside ResourceList is set to 'RoyaltyAdministrator'.
+    """
     try:
-        parser = etree.XMLParser(remove_blank_text=True)
-        with open(xml_file, 'rb') as f:
-            xml_doc = etree.parse(f, parser)
-
         namespaces = {'ern': 'http://ddex.net/xml/ern/43'}
+
         rights_control_type_xpath = "//ern:NewReleaseMessage/*[local-name()='ResourceList']/*[local-name()='SoundRecording']/*[local-name()='ResourceRightsController']/*[local-name()='RightsControlType']"
         rights_control_type_elements = xml_doc.xpath(rights_control_type_xpath, namespaces=namespaces)
 
@@ -228,32 +241,101 @@ def check_rights_control_type_is_royalty_administrator(xml_file):
         logging.error(f"CHECK 8... FAIL. RightsControlType check - Error: {e}")
         return False
 
+def check_territory_of_rights_delegation(xml_doc):
+    """
+    Check 9: Ensure that every DelegatedUsageRights inside ResourceRightsController,
+    inside SoundRecording, inside ResourceList contains a TerritoryOfRightsDelegation.
+    """
+    try:
+        namespaces = {'ern': 'http://ddex.net/xml/ern/43'}
+        delegated_usage_xpath = "//ern:NewReleaseMessage/*[local-name()='ResourceList']/*[local-name()='SoundRecording']/*[local-name()='ResourceRightsController']/*[local-name()='DelegatedUsageRights']"
+        delegated_usage_elements = xml_doc.xpath(delegated_usage_xpath, namespaces=namespaces)
+
+        for delegated_usage in delegated_usage_elements:
+            territory_xpath = ".//*[local-name()='TerritoryOfRightsDelegation']"
+            territory_elements = delegated_usage.xpath(territory_xpath)
+
+            if not territory_elements:
+                logging.error("CHECK 9... FAIL. No TerritoryOfRightsDelegation found in DelegatedUsageRights")
+                return False
+
+        logging.info("CHECK 9... PASS. All DelegatedUsageRights have TerritoryOfRightsDelegation")
+        return True
+
+    except Exception as e:
+        logging.error(f"CHECK 9... FAIL. TerritoryOfRightsDelegation check - Error: {e}")
+        return False
+
+def check_use_type_in_sound_recording(xml_doc):
+    """
+    Check 10: Ensure every SoundRecording has a UseType value of at least one of the following:
+    'Stream', 'PermanentDownload', 'ConditionalDownload', 'TetheredDownload'.
+    """
+    try:
+        namespaces = {'ern': 'http://ddex.net/xml/ern/43'}
+        valid_use_types = {"Stream", "PermanentDownload", "ConditionalDownload", "TetheredDownload"}
+        sound_recording_xpath = "//ern:NewReleaseMessage/*[local-name()='ResourceList']/*[local-name()='SoundRecording']"
+        sound_recordings = xml_doc.xpath(sound_recording_xpath, namespaces=namespaces)
+
+        for sound_recording in sound_recordings:
+            use_type_xpath = ".//*[local-name()='DelegatedUsageRights']/*[local-name()='UseType']"
+            use_type_elements = sound_recording.xpath(use_type_xpath)
+
+            if not use_type_elements:
+                logging.error("CHECK 10... FAIL. No UseType found for a SoundRecording")
+                return False
+
+            for use_type_element in use_type_elements:
+                use_type_value = use_type_element.text.strip()
+                if use_type_value in valid_use_types:
+                    logging.info("CHECK 10... PASS. Valid UseType found")
+                    break
+            else:
+                logging.error("CHECK 10... FAIL. No valid UseType found")
+                return False
+
+        return True
+
+    except Exception as e:
+        logging.error(f"CHECK 10... FAIL. UseType check - Error: {e}")
+        return False
+
 def main(xml_file, schema_url):
-    total_checks = 8  # Incremented by 1 for Check 8
+    total_checks = 10  # Updated for the current number of checks
     passed_checks = 0
 
     try:
+        # Parse the XML file and handle encoding automatically
         xml_doc = etree.parse(xml_file, etree.XMLParser(recover=True))
 
-        if validate_xml(xml_doc, schema_url):
+        if validate_xml(xml_file, schema_url):
             passed_checks += 1
 
         if check_whitelisted_party_id(xml_doc):
             passed_checks += 1
 
+        if check_right_share_percentage(xml_doc):
+            passed_checks += 1
+
         if check_affiliation_type_for_sender(xml_doc):
             passed_checks += 1
 
-        if check_rights_type_for_sender(xml_file):
+        if check_rights_type_for_sender(xml_doc):
             passed_checks += 1
 
-        if check_isrc_in_sound_recording(xml_file):
+        if check_isrc_in_sound_recording(xml_doc):
             passed_checks += 1
 
-        if check_rights_controller_is_music_licensing_company(xml_file):
+        if check_rights_controller_is_music_licensing_company(xml_doc):
             passed_checks += 1
 
-        if check_rights_control_type_is_royalty_administrator(xml_file):  # Add Check 8
+        if check_rights_control_type_is_royalty_administrator(xml_doc):
+            passed_checks += 1
+
+        if check_territory_of_rights_delegation(xml_doc):
+            passed_checks += 1
+
+        if check_use_type_in_sound_recording(xml_doc):
             passed_checks += 1
 
     except Exception as e:
@@ -268,7 +350,7 @@ if __name__ == "__main__":
     if len(sys.argv) != 3:
         print("Usage: python script.py <xml_file> <schema_url>")
         sys.exit(1)
-    
+
     xml_file = sys.argv[1]
     schema_url = sys.argv[2]
     main(xml_file, schema_url)
