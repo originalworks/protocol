@@ -67,9 +67,9 @@
                 <PartyAffiliateReference>PADPIDA2014021302H</PartyAffiliateReference> <!--OR <CompanyName>My Company</CompanyName>-->
                 <Type>MusicLicensingCompany</Type>
                 <TerritoryCode>Worldwide</TerritoryCode>
-                <ValidityPeriod>  <!--OPTIONAL-->
+                <ValidityPeriod>
                     <StartDate>2023-01-01</StartDate>
-                    <EndDate>2025-12-31</EndDate>
+                    <EndDate>2025-12-31</EndDate> <!--OPTIONAL-->
                 </ValidityPeriod>
                 <RightsType>MakeAvailableRight</RightsType>
                 <!-- 
