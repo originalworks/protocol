@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-16"?>
+<NewReleaseMessage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" AvsVersionId="4.3" LanguageAndScriptCode="en" xsi:schemaLocation="http://service.ddex.net/xml/ern/43/release-notification.xsd" xmlns:ern="http://ddex.net/xml/ern/43">
+  <MessageHeader>
+    <MessageId>545f3d71-5826-4cd5-bfcc-4411e2c28280</MessageId>
+    <MessageSender>
+      <PartyId>PADPIDA2014021302H</PartyId>
+      <PartyName>
+        <FullName>Revelator Ltd.</FullName>
+      </PartyName>
+    </MessageSender>
+    <MessageRecipient>
+      <PartyId>PADPIDA2024072201A</PartyId>
+      <PartyName>
+        <FullName>Original Works</FullName>
+      </PartyName>
+    </MessageRecipient>
+    <MessageCreatedDateTime>2024-12-03T11:50:35.1639752Z</MessageCreatedDateTime>
+  </MessageHeader>
+  <PartyList>
+    <Party>
+      <PartyReference>P381687</PartyReference>
+      <PartyName>
+        <FullName>L.A.X</FullName>
+      </PartyName>
+    </Party>
+    <Party>
+      <PartyReference>P0CC1</PartyReference>
+      <PartyName>
+        <FullName>Copyright Control</FullName>
+      </PartyName>
+    </Party>
+    <Party>
+      <PartyReference>PLabel1</PartyReference>
+      <PartyName>
+        <FullName>Indie</FullName>
+      </PartyName>
+    </Party>
+    <Party>
+      <PartyReference>PLicensor1</PartyReference>
+      <PartyName>
+        <FullName>Revelator Ltd.</FullName>
+      </PartyName>
+    </Party>
+  </PartyList>
+  <ResourceList>
+    <SoundRecording>
+      <ResourceReference>A1</ResourceReference>
+      <Type>MusicalWorkSoundRecording</Type>
+      <SoundRecordingEdition>
+        <ResourceId>
+          <ISRC>QZAM61900408</ISRC>
+        </ResourceId>
+        <PLine>
+          <Year>2020</Year>
+          <PLineText>2020 Indie</PLineText>
+        </PLine>
+        <RecordingMode>Stereo</RecordingMode>
+        <TechnicalDetails ApplicableTerritoryCode="Worldwide">
+          <TechnicalResourceDetailsReference>T1</TechnicalResourceDetailsReference>
+          <DeliveryFile>
+            <Type>AudioFile</Type>
+            <ContainerFormat>FlaFile</ContainerFormat>
+            <AudioCodecType>FlaFile</AudioCodecType>
+            <BitRate UnitOfMeasure="kbps">0</BitRate>
+            <SamplingRate UnitOfMeasure="Hz">44100</SamplingRate>
+            <BitDepth>16</BitDepth>
+            <File>
+              <URI>resources/b19e14e5-7fa8-4338-aadd-ec513a1ee3e4.flac</URI>
+            </File>
+          </DeliveryFile>
+        </TechnicalDetails>
+      </SoundRecordingEdition>
+      <DisplayTitleText>Gobe</DisplayTitleText>
+      <DisplayTitle>
+        <TitleText>Gobe</TitleText>
+      </DisplayTitle>
+      <DisplayArtistName>L.A.X</DisplayArtistName>
+      <DisplayArtist>
+        <ArtistPartyReference>P381687</ArtistPartyReference>
+        <DisplayArtistRole>MainArtist</DisplayArtistRole>
+      </DisplayArtist>
+      <Contributor SequenceNumber="1">
+        <ContributorPartyReference>P0CC1</ContributorPartyReference>
+        <Role UserDefinedValue="MusicPublisher">UserDefined</Role>
+      </Contributor>
+      <ResourceRightsController>
+        <RightsControllerPartyReference>PLicensor1</RightsControllerPartyReference>
+        <RightsControlType>RightsController</RightsControlType>
+        <RightSharePercentage>100.00</RightSharePercentage>
+      </ResourceRightsController>
+      <WorkRightsController>
+        <RightsControllerPartyReference>PLicensor1</RightsControllerPartyReference>
+        <RightsControlType>RightsController</RightsControlType>
+      </WorkRightsController>
+      <Duration>PT0S</Duration>
+      <ParentalWarningType>NoAdviceAvailable</ParentalWarningType>
+    </SoundRecording>
+    <Image>
+      <ResourceReference>A2</ResourceReference>
+      <Type>FrontCoverImage</Type>
+      <TechnicalDetails ApplicableTerritoryCode="Worldwide">
+        <TechnicalResourceDetailsReference>T2</TechnicalResourceDetailsReference>
+        <ImageCodecType>JPEG</ImageCodecType>
+        <ImageHeight UnitOfMeasure="Pixel">1400</ImageHeight>
+        <ImageWidth UnitOfMeasure="Pixel">1400</ImageWidth>
+        <File>
+          <URI>resources/efb0c057-88be-49f9-b263-a30267d23a21.jpg</URI>
+        </File>
+      </TechnicalDetails>
+    </Image>
+  </ResourceList>
+  <ReleaseList>
+    <Release>
+      <ReleaseReference>R0</ReleaseReference>
+      <ReleaseType>SingleResourceRelease</ReleaseType>
+      <ReleaseId>
+        <ICPN>701798205904</ICPN>
+      </ReleaseId>
+      <DisplayTitleText>Gobe</DisplayTitleText>
+      <DisplayTitle>
+        <TitleText>Gobe</TitleText>
+      </DisplayTitle>
+      <DisplayArtistName>L.A.X</DisplayArtistName>
+      <DisplayArtist SequenceNumber="1">
+        <ArtistPartyReference>P381687</ArtistPartyReference>
+        <DisplayArtistRole>MainArtist</DisplayArtistRole>
+      </DisplayArtist>
+      <ReleaseLabelReference>PLabel1</ReleaseLabelReference>
+      <PLine>
+        <Year>2020</Year>
+        <PLineText>2020 Indie</PLineText>
+      </PLine>
+      <CLine>
+        <Year>2020</Year>
+        <CLineText>2020 Indie</CLineText>
+      </CLine>
+      <Genre>
+        <GenreText>music style</GenreText>
+      </Genre>
+      <ParentalWarningType>NoAdviceAvailable</ParentalWarningType>
+      <ResourceGroup>
+        <ResourceGroupContentItem>
+          <SequenceNumber>1</SequenceNumber>
+          <ReleaseResourceReference>A1</ReleaseResourceReference>
+        </ResourceGroupContentItem>
+        <ResourceGroupContentItem>
+          <SequenceNumber>2</SequenceNumber>
+          <ReleaseResourceReference>A2</ReleaseResourceReference>
+        </ResourceGroupContentItem>
+      </ResourceGroup>
+    </Release>
+  </ReleaseList>
+</NewReleaseMessage>
