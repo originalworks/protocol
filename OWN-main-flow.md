@@ -2,17 +2,13 @@
 flowchart TB
     subgraph Oracle["Oracle Layer"]
         input1["DDEX.ERN or CWR Files"]
-        input2["Audio Streams"]
         input3["Royalty Payouts"]
-        statements["User Statements"]
         
         subgraph RoyaltyClient["Royalty Pool Client"]
             merkle["Merkle Tree\nSplit Information"]
             pool["Royalty Pool\nUSDC Balance"]
         end
 
-        input2 --> merkle
-        merkle --> statements
         input3 --> pool
     end
 
@@ -20,12 +16,16 @@ flowchart TB
         parse["XML Parser"]
         convert["JSON output"]
         check["Validation Checks"]
+        passed{"passed"}
+        kill["kill process"]
         generate["Generate ISCC (optional)"]
         ipfs["IPFS Storage"]
     
         parse --> convert
         convert --> check
-        check --> generate
+        check --> passed
+        passed -->|No| kill
+        passed -->|Yes| generate
         generate --> ipfs
     end
 
@@ -54,7 +54,7 @@ flowchart TB
         payout["Payout Wallet\nNew address per claim"]
     end
 
-    Oracle --> OWEN
+    input1 --> OWEN
     OWEN --> Storage
     Storage --> ValidatorNetwork
     ValidatorNetwork --> Index
@@ -70,6 +70,4 @@ flowchart TB
     style ValidatorNetwork fill:#e8f5e9
     style Index fill:#f3e5f5
     style RightsClaims fill:#e1bee7
-
-
 ```
